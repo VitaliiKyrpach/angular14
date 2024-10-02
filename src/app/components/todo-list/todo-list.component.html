@@ -1,0 +1,12 @@
+<h2>Todo list</h2>
+<ul>
+    @for(todo of getTodos(); track todo.id){
+        <li>
+            <p>{{todo.id}}: {{todo.title}}</p>
+            <p>Done: {{todo.acomplished}}</p>
+            <input type="checkbox" (change)="changeTodo(todo.id)" [checked]="todo.acomplished">
+            <button type="button" (click)="deleteTodo(todo.id)">-</button>
+        </li>
+    }
+</ul>
+<!-- <li *ngFor="let i of getTodo()"></li> -->
