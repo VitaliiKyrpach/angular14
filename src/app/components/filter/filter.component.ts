@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Filter } from '../../interfaces/interfaces';
 import { FormsModule } from '@angular/forms';
 import { TodoServiceService } from '../../services/todo-service.service';
@@ -11,14 +11,17 @@ import { TodoServiceService } from '../../services/todo-service.service';
   styleUrl: './filter.component.css'
 })
 export class FilterComponent { 
-  public filter: Filter = Filter.ALL
+  @Input() filterType!: string;
+
+  public filterTodo: Filter = Filter.ALL
+  public filterRecipe = 'none'
 
   constructor(private todoService: TodoServiceService){
 
   }
 
   public setFilter(){
-    this.todoService.filterTodo(this.filter)
+    this.todoService.filterTodo(this.filterTodo)
   }
 
 }

@@ -1,7 +1,16 @@
-<div>
-    <select [(ngModel)]="filter" (change)="setFilter()">
-        <option value="all">all</option>
-        <option value="completed">completed</option>
-        <option value="inCompleted">inCompleted</option>
-    </select>
-</div>
+@if(filterType === 'todo'){
+    <div>
+        <select [(ngModel)]="filterTodo" (change)="setFilter()">
+            <option value="all">all</option>
+            <option value="completed">completed</option>
+            <option value="inCompleted">inCompleted</option>
+        </select>
+    </div>
+} @else {
+    <div>
+        <select >
+            <option value="none">none</option>
+            <option value="data">сортувати за датою</option>
+        </select>
+    </div>
+}

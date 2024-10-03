@@ -1,3 +1,14 @@
-<app-add-todo/>
-<app-filter/>
-<app-todo-list/>
+<div class="container">
+    <header class="header">
+        <nav class="nav">
+            <a class="logo" routerLink="/"><img class="logoImg" src="logo.svg" alt="Description" /> <span class="logoText">Level Up</span></a>   
+            <ul class="linkList">
+                <li><a routerLink="/todoList" class="link" routerLinkActive="active" ariaCurrentWhenActive="page">Todo List</a></li>
+                <li><a routerLink="/homework-3" class="link" routerLinkActive="active" ariaCurrentWhenActive="page">Homework 3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">    
+        <router-outlet/>
+    </main>
+</div>

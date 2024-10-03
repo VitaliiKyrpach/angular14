@@ -1,0 +1,12 @@
+.home{
+    padding: 0 30px;
+    text-align: center;
+}
+.homeText{
+    font-size: 45px;
+    font-weight: 500;
+}
+.capital{
+    font-size: 55px;
+    font-weight: 600;
+}
