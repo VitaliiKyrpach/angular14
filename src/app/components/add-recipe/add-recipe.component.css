@@ -1,0 +1,22 @@
+.recipeAdd{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #4d17c1;
+    border-radius: 20px;
+}
+.recipeAdd .title{
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+.author{
+    width: 200px;
+}
+.date{
+    width: 100px;
+}
+.textarea{
+    resize: none;
+}

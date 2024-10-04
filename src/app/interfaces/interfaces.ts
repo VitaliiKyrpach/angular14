@@ -4,8 +4,20 @@ export interface Todo {
     id: number
 }
 
-export enum Filter{
+export enum FilterTodo{
     ALL = 'all',
     COMPLETED = 'completed',
-    INCOMPLETED = 'inCompleted'
+    INCOMPLETED = 'inCompleted', 
+}
+
+export interface Recipe {
+    author: string;
+    date: string;
+    text: string;
+    id?: number;
+}
+
+export enum FilterRecipe{
+    NONE = 'none',
+    DATE = 'date',
 }

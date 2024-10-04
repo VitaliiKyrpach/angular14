@@ -1,1 +1,10 @@
-<p>recipe-list works!</p>
+    <ul class="recipeList">
+        @for(recipe of getRecipes(); track recipe.id; let e = $even){
+            <li class="recipeCard" [ngClass]="e ? 'back' : ''">
+                <h3 class="title">Автор - {{recipe.author}}</h3>
+                <p>{{recipe.text}}</p>
+                <p>дата створення {{recipe.date | date:'dd.MM.yyyy' }}</p>
+            </li>
+        }
+    </ul>
+

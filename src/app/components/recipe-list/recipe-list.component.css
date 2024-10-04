@@ -1,0 +1,18 @@
+.recipeCard{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+ 
+}
+.recipeCard:not(:last-child){
+    margin-bottom: 5px;
+}
+.recipeCard .title{
+    font-weight: 500;
+    margin-left: 10px;
+}
+.back{
+    background-color: #d8ceed;
+    border-radius: 25px;
+}

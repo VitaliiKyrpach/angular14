@@ -1,1 +1,7 @@
-<p>add-recipe works!</p>
+<div class="recipeAdd">
+    <h2 class="title">Add recipe</h2>
+    <input class="author" type="text" placeholder="Автор" [(ngModel)]="author">
+    <input class="date" type="date" [(ngModel)]="date">
+    <textarea class="textarea" rows="4" cols="30" placeholder="Рецепт" [(ngModel)]="text"></textarea>
+    <button type="button" (click)="addRecipe()" [disabled]='!author || !date || !text'>Додати</button>
+</div>

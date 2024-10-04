@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Filter, Todo } from '../interfaces/interfaces';
+import { FilterTodo, Todo } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoServiceService {
   private id: number = 1;
-  private filter: Filter = Filter.ALL
+  private filter: FilterTodo = FilterTodo.ALL
 
   public todoS: Todo[] = [
     {title: 'learn angular',
@@ -54,17 +54,17 @@ export class TodoServiceService {
     this.calcFilter(this.filter)
   }
 
-  public filterTodo(filter: Filter): void{
+  public filterTodo(filter: FilterTodo): void{
     this.filter = filter
     this.calcFilter(this.filter)
   }
 
-  private calcFilter(filter: Filter): void{
-    if(filter === Filter.COMPLETED){
+  private calcFilter(filter: FilterTodo): void{
+    if(filter === FilterTodo.COMPLETED){
       this.filteredTodos = this.todoS.filter(todo=>
         todo.acomplished === true
       )
-    } else if(filter === Filter.INCOMPLETED){
+    } else if(filter === FilterTodo.INCOMPLETED){
       this.filteredTodos = this.todoS.filter(todo=>
         todo.acomplished === false
       )

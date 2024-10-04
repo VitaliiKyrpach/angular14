@@ -1,0 +1,11 @@
+.recipe{
+    display: flex;
+    gap: 40px;
+}
+.recipesList{
+    padding-top: 10px;
+    flex-grow: 1;
+}
+.recipesList .title{
+    margin-bottom: 10px;
+}

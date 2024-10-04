@@ -7,10 +7,10 @@
         </select>
     </div>
 } @else {
-    <div>
-        <select >
+    <div class="recipeFilter">
+        <select [(ngModel)]="filterRecipe" (change)="recipeFilter()">
             <option value="none">none</option>
-            <option value="data">сортувати за датою</option>
+            <option value="date">сортувати за датою</option>
         </select>
     </div>
 }
