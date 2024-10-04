@@ -1,0 +1,19 @@
+.todoCard{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: white;
+    border-radius: 15px;
+}
+.todoCard:not(:last-child){
+    margin-bottom: 5px;
+}
+.delBtn{
+    margin-left: auto;
+}
+.done{
+    color: grey;
+    text-decoration: line-through;
+    background-color: #e4e4e4;
+}

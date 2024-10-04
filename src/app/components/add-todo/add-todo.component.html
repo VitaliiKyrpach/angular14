@@ -1,5 +1,7 @@
-<div>
-    <h2>Create todo</h2>
-    <input type="text" placeholder="enter todo title" [(ngModel)]="title">
-    <button type="button" (click)="addTodo()">+</button>
+<div class="todoAdd">
+    <h2 class="title">Create todo</h2>
+    <div class="wrapper">
+        <input class="text" type="text" placeholder="enter todo title" [(ngModel)]="title">
+        <button class="addBtn" type="button" (click)="addTodo()">+</button>
+    </div>
 </div>

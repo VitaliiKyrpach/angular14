@@ -2,11 +2,11 @@
     display: flex;
     gap: 40px;
 }
-.recipesList{
+.recipeAside{
     padding-top: 10px;
     flex-grow: 1;
     overflow: hidden;
 }
-.recipesList .title{
+.recipeAside .title{
     margin-bottom: 10px;
 }

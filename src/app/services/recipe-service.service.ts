@@ -28,12 +28,12 @@ export class RecipeServiceService {
     this.sortRecipes(this.filterRecipe)
   }
 
-  private sortRecipes(sort: FilterRecipe): Recipe[]{
+  private sortRecipes(sort: FilterRecipe): void{
     if(sort === 'date'){
       this.sortedRecipes = [...this.recipes].sort((a,b) =>  a.date.localeCompare(b.date)) 
     } else{
       this.sortedRecipes = [...this.recipes]
     }
-    return this.sortedRecipes; 
+    
   }
 }

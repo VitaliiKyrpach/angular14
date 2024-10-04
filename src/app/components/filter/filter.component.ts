@@ -26,6 +26,7 @@ export class FilterComponent {
   }
 
   public recipeFilter(): void{
+    console.log(this.filterRecipe)
     this.recipeService.filterRecipes(this.filterRecipe)
   }
 }

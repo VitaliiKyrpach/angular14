@@ -1,12 +1,12 @@
-<h2>Todo list</h2>
-<ul>
-    @for(todo of getTodos(); track todo.id){
-        <li>
-            <p>{{todo.id}}: {{todo.title}}</p>
-            <p>Done: {{todo.acomplished}}</p>
-            <input type="checkbox" (change)="changeTodo(todo.id)" [checked]="todo.acomplished">
-            <button type="button" (click)="deleteTodo(todo.id)">-</button>
-        </li>
-    }
-</ul>
+    <ul class="todoList">
+        @for(todo of getTodos(); track todo.id){
+            <li class="todoCard" [ngClass]="todo.acomplished ? 'done' : ''">
+                <input type="checkbox" (change)="changeTodo(todo.id)" [checked]="todo.acomplished">
+                <p class="text">{{todo.title}}</p>
+                <button class="delBtn" type="button" (click)="deleteTodo(todo.id)">-</button>
+            </li>
+        }@empty {
+            <li aria-hidden="true"> There are no todos. Go add some.</li>
+          }
+    </ul>
 <!-- <li *ngFor="let i of getTodo()"></li> -->

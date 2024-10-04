@@ -5,6 +5,8 @@
                 <p>{{recipe.text}}</p>
                 <p>дата створення {{recipe.date | date:'dd.MM.yyyy' }}</p>
             </li>
+        }@empty{
+            <li aria-hidden="true"> There are no recipes. Go add some.</li>
         }
     </ul>
 

@@ -1,0 +1,12 @@
+.todo{
+    display: flex;
+    gap: 40px;
+}
+.todoAside{
+    padding-top: 10px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+.todoAside .title{
+    margin-bottom: 10px;
+}
