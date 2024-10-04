@@ -14,7 +14,6 @@ export class RecipeServiceService {
   }
 
   public getRecipes(): Recipe[]{
-
     return this.sortedRecipes
   }
   public addRecipe(recipe: Recipe):void{
@@ -31,9 +30,10 @@ export class RecipeServiceService {
 
   private sortRecipes(sort: FilterRecipe): Recipe[]{
     if(sort === 'date'){
-      return this.sortedRecipes = [...this.recipes].sort((a,b) =>  a.date.localeCompare(b.date)) 
+      this.sortedRecipes = [...this.recipes].sort((a,b) =>  a.date.localeCompare(b.date)) 
     } else{
-      return this.sortedRecipes = this.recipes
-    } 
+      this.sortedRecipes = [...this.recipes]
+    }
+    return this.sortedRecipes; 
   }
 }

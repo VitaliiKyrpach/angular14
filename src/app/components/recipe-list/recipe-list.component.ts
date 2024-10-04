@@ -11,9 +11,8 @@ import { Recipe } from '../../interfaces/interfaces';
   styleUrl: './recipe-list.component.css'
 })
 export class RecipeListComponent {
-  constructor(private recipeService: RecipeServiceService){}
-
-  public getRecipes(): Recipe[]{
-    return this.recipeService.getRecipes()
+  public recipes: Recipe[]=[]
+  constructor(private recipeService: RecipeServiceService){
+    this.recipes = this.recipeService.getRecipes()
   }
 }

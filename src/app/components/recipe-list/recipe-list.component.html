@@ -1,5 +1,5 @@
     <ul class="recipeList">
-        @for(recipe of getRecipes(); track recipe.id; let e = $even){
+        @for(recipe of recipes; track recipe.id; let e = $even){
             <li class="recipeCard" [ngClass]="e ? 'back' : ''">
                 <h3 class="title">Автор - {{recipe.author}}</h3>
                 <p>{{recipe.text}}</p>

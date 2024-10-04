@@ -3,7 +3,8 @@
     flex-direction: column;
     gap: 10px;
     padding: 15px;
- 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 .recipeCard:not(:last-child){
     margin-bottom: 5px;

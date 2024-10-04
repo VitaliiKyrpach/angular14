@@ -5,6 +5,7 @@
 .recipesList{
     padding-top: 10px;
     flex-grow: 1;
+    overflow: hidden;
 }
 .recipesList .title{
     margin-bottom: 10px;
