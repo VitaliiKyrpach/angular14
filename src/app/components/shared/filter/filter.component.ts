@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { FilterRecipe, FilterTodo } from '../../interfaces/interfaces';
 import { FormsModule } from '@angular/forms';
-import { TodoServiceService } from '../../services/todo-service.service';
-import { RecipeServiceService } from '../../services/recipe-service.service';
+import { FilterRecipe, FilterTodo } from '../../../interfaces/interfaces';
+import { TodoServiceService } from '../../../services/todo-service.service';
+import { RecipeServiceService } from '../../../services/recipe-service.service';
+
 
 @Component({
   selector: 'app-filter',

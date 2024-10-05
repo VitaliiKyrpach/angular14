@@ -1,14 +1,73 @@
 <div class="container">
-    <header class="header">
-        <nav class="nav">
-            <a class="logo" routerLink="/"><img class="logoImg" src="logo.svg" alt="Description" /> <span class="logoText">Level Up</span></a>   
-            <ul class="linkList">
-                <li><a routerLink="/todoList" class="link" routerLinkActive="active" ariaCurrentWhenActive="page">Todo List</a></li>
-                <li><a routerLink="/homework-3" class="link" routerLinkActive="active" ariaCurrentWhenActive="page">Homework 3</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main">    
-        <router-outlet/>
-    </main>
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" routerLink="/"
+        ><img class="logoImg" src="logo.svg" alt="Description" />
+        <span class="logoText">Level Up</span></a
+      >
+      <ul class="linkCats">
+        <li
+          class="categories"
+          (mouseover)="handleCats('classWorks')"
+          (mouseleave)="handleCats('')"
+        >
+          <p>ClassWorks</p>
+          @if(category === 'classWorks'){
+          <ul class="linkList">
+            <li>
+              <a
+                routerLink="/todoList"
+                class="link"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                >Todo List</a
+              >
+            </li>
+            <li>
+              <a
+                routerLink="/cart"
+                class="link"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                >Cart</a
+              >
+            </li>
+          </ul>
+          }
+        </li>
+        <li
+          class="categories"
+          (mouseover)="handleCats('homeWorks')"
+          (mouseleave)="handleCats('')"
+        >
+          <p>Homeworks</p>
+          @if(category === 'homeWorks'){
+          <ul class="linkList">
+            <li>
+              <a
+                routerLink="/homework-3"
+                class="link"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                >Homework 3</a
+              >
+            </li>
+            <li>
+                <a
+                routerLink="/homework-4"
+                class="link"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page"
+                >Homework 4</a
+              >
+            </li>
+          </ul>
+          }
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+    <router-outlet />
+  </main>
 </div>

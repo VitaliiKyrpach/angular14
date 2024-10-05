@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { RecipeServiceService } from '../../services/recipe-service.service';
+
 import { CommonModule } from '@angular/common';
-import { Recipe } from '../../interfaces/interfaces';
+import { Recipe } from '../../../interfaces/interfaces';
+import { RecipeServiceService } from '../../../services/recipe-service.service';
+
 
 @Component({
   selector: 'app-recipe-list',

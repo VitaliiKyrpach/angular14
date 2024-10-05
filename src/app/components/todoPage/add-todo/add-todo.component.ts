@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TodoServiceService } from '../../services/todo-service.service';
+import { TodoServiceService } from '../../../services/todo-service.service';
+
 
 @Component({
   selector: 'app-add-todo',
