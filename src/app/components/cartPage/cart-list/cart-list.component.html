@@ -1,0 +1,15 @@
+<ul>
+  @for(good of cart; track good.name){
+  <li>
+    <p>{{ good.name }}</p>
+    <p>{{ good.qty }}</p>
+    <p>{{ price(good) }}</p>
+    <button type="button" (click)="remove(good)">Remove</button>
+  </li>
+  }
+</ul>
+@if(calcTotal() !== 0){
+    <p>Total: {{ calcTotal() }}</p>
+} @else{
+    <p>Total:</p>
+}

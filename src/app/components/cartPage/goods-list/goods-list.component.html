@@ -1,0 +1,17 @@
+<ul>
+  @for(good of goods; track good.name){
+  <li>
+    <p>{{ good.name }}</p>
+    <p>{{good.price | currency}}</p>
+    <button type="button" (click)="addGoods(good)" [disabled]="good.isAdded">
+      add to cart
+    </button>
+    @if(good.isAdded){
+    <div>
+      <button type="button" (click)="handleAction(good, 'inc')">+</button>
+      <button type="button" (click)="handleAction(good, 'dec')">-</button>
+    </div>
+    }
+  </li>
+  }
+</ul>
