@@ -1,24 +1,33 @@
 import { Component } from '@angular/core';
 import { CartServiceService } from '../../../services/cart-service.service';
 import { Goods } from '../../../interfaces/interfaces';
+import { CurrencyPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-cart-list',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './cart-list.component.html',
   styleUrl: './cart-list.component.css',
 })
 export class CartListComponent {
+  public total!: number;
   public cart: Goods[] = [];
 
   constructor(private cartService: CartServiceService) {
-    this.cart = this.cartService.getCart();
+
+  }
+
+  ngOnInit() {
+    this.cartService.getCartObservable().subscribe(cart => {
+      this.cart = cart;
+      this.total = this.calcTotal();
+    });
   }
 
   public remove(good: Goods) {
     this.cartService.removeFromCart(good);
-    this.cart = this.cartService.getCart();
   }
 
   public price(good: Goods): number {

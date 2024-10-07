@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Goods } from '../interfaces/interfaces';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -40,19 +41,25 @@ export class CartServiceService {
 
   private cart: Goods[] = [];
 
+  private cartSubject = new BehaviorSubject<Goods[]>(this.cart);
+  
   public getGoods(): Goods[] {
     return this.goods;
   }
 
   public getCart(): Goods[] {
-    return this.cart;
+    return this.cartSubject.value;
+  }
+
+  public getCartObservable() {
+    return this.cartSubject.asObservable();
   }
 
   public addToCart(item: Goods) {
     const isExist = this.cart.find((slot) => slot.name === item.name);
     if (!isExist) {
       this.cart.push({ ...item });
-  
+      this.cartSubject.next(this.cart);
     }
   }
 
@@ -63,8 +70,9 @@ export class CartServiceService {
         slot.isAdded = false;
       }
     });
-   
+    this.cartSubject.next(this.cart);
   }
+
   public handleQty(item: Goods, action: 'inc' | 'dec') {
     this.cart.map((slot) => {
       if (slot.name === item.name) {
@@ -77,7 +85,7 @@ export class CartServiceService {
         }
       }
     });
- 
+    this.cartSubject.next(this.cart);
   }
   
 }

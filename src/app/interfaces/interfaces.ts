@@ -28,3 +28,13 @@ export interface Goods {
   qty: number;
   isAdded: boolean;
 }
+
+export interface Product {
+  id: number, 
+  name: string, 
+  price: number,
+  category: string,
+  description: string,
+  inStock: 'Yes' | 'No', 
+  rating: number
+}

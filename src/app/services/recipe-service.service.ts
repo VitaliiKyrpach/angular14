@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FilterRecipe, Recipe } from '../interfaces/interfaces';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,12 @@ export class RecipeServiceService {
     this.sortedRecipes = this.recipes
   }
 
+  private filterSubject = new BehaviorSubject<FilterRecipe>(this.filterRecipe);
+
+  public getFilterObservable() {
+    return this.filterSubject.asObservable();
+  }
+
   public getRecipes(): Recipe[]{
     return this.sortedRecipes
   }
@@ -21,11 +28,13 @@ export class RecipeServiceService {
     recipe.id = this.id
     this.recipes.push(recipe);
     this.sortRecipes(this.filterRecipe)
+    this.filterSubject.next(this.filterRecipe)
   }
 
   public filterRecipes(sort: FilterRecipe): void{
     this.filterRecipe = sort;
     this.sortRecipes(this.filterRecipe)
+    this.filterSubject.next(this.filterRecipe)
   }
 
   private sortRecipes(sort: FilterRecipe): void{

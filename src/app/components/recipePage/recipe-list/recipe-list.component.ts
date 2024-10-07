@@ -17,4 +17,10 @@ export class RecipeListComponent {
   constructor(private recipeService: RecipeServiceService){
     this.recipes = this.recipeService.getRecipes()
   }
+  ngOnInit() {
+    this.recipeService.getFilterObservable().subscribe(filter => {
+      
+      this.recipes = this.recipeService.getRecipes()
+    });
+  }
 }

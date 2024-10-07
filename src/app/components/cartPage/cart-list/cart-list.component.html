@@ -2,14 +2,14 @@
   @for(good of cart; track good.name){
   <li>
     <p>{{ good.name }}</p>
-    <p>{{ good.qty }}</p>
-    <p>{{ price(good) }}</p>
+    <p>Quantity: {{ good.qty }}</p>
+    <p>{{ price(good) | currency}}</p>
     <button type="button" (click)="remove(good)">Remove</button>
   </li>
   }
 </ul>
-@if(calcTotal() !== 0){
-    <p>Total: {{ calcTotal() }}</p>
+@if(total !== 0){
+    <p>Total: {{ total | currency }}</p>
 } @else{
     <p>Total:</p>
 }
