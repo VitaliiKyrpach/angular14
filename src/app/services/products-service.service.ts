@@ -11,7 +11,7 @@ export class ProductsServiceService {
       name: 'Product 1', 
       price: 100,
       category: 'Category 1',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'Yes', 
       rating: 3
     },
@@ -20,7 +20,7 @@ export class ProductsServiceService {
       name: 'Product 2', 
       price: 200,
       category: 'Category 2',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'No', 
       rating: 5
     },
@@ -29,7 +29,7 @@ export class ProductsServiceService {
       name: 'Product 3', 
       price: 150,
       category: 'Category 1',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'Yes', 
       rating: 2
     },
@@ -38,7 +38,7 @@ export class ProductsServiceService {
       name: 'Product 4', 
       price: 250,
       category: 'Category 2',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'No', 
       rating: 5
     },
@@ -47,7 +47,7 @@ export class ProductsServiceService {
       name: 'Product 5', 
       price: 100,
       category: 'Category 1',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'Yes', 
       rating: 3
     },
@@ -56,7 +56,7 @@ export class ProductsServiceService {
       name: 'Product 6', 
       price: 200,
       category: 'Category 2',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'No', 
       rating: 5
     },
@@ -65,7 +65,7 @@ export class ProductsServiceService {
       name: 'Product 7', 
       price: 150,
       category: 'Category 1',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'Yes', 
       rating: 2
     },
@@ -74,7 +74,7 @@ export class ProductsServiceService {
       name: 'Product 8', 
       price: 250,
       category: 'Category 2',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam voluptates commodi, quod, cupiditate nobis sunt a dolorum, voluptatibus eveniet quisquam laudantium hic! Voluptatem voluptatibus asperiores fuga est alias totam officiis!',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       inStock: 'No', 
       rating: 5
     }

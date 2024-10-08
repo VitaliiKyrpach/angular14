@@ -1,4 +1,4 @@
-<section>
-    <app-products-table/>
-    <app-side-menu/>
+<section class="products" >
+    <app-products-table (dispatchProduct)="receiveProduct($event)"/>
+    <app-side-menu [receivedProduct]="product"/>
 </section>

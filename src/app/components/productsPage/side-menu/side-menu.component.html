@@ -1,1 +1,14 @@
-<p>side-menu works!</p>
+<div class="aside" [ngClass]="receivedProduct !== null ? 'move' : ''" id="menu">
+    @if(receivedProduct){
+        <p>{{receivedProduct.name}}</p>
+        <p>{{receivedProduct.price | currency}}</p>
+        <p>{{receivedProduct.category}}</p>
+        <p>{{receivedProduct.description}}</p>
+        @if(receivedProduct.inStock === 'Yes'){
+            <p>inStock</p>
+        } @else{
+            <p>not inStock</p>
+        }
+        <p>Rating: {{receivedProduct.rating}}</p>
+    }
+</div>

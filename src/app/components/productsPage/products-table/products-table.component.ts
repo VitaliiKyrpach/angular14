@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Product } from '../../../interfaces/interfaces';
 import { ProductsServiceService } from '../../../services/products-service.service';
 import { ProductsPriceComponent } from '../products-price/products-price.component';
@@ -12,7 +12,14 @@ import { ProductsPriceComponent } from '../products-price/products-price.compone
 })
 export class ProductsTableComponent {
   public products: Product[] = []
+  @Output() dispatchProduct = new EventEmitter<Product>()
+
+
   constructor(private productService: ProductsServiceService){
     this.products = productService.getProducts()
+  }
+  public handleAside(product: Product):void{
+    this.dispatchProduct.emit(product)
+    
   }
 }
