@@ -1,7 +1,7 @@
 <table class="table" id="table">
     <tr class="title"><td >Product Name</td><td>Price</td><td>Category</td><td class="small">In Stock</td><td class="small">Selected</td></tr>
     @for(product of products; track product.id){
-    <tr (click)="handleAside(product)"><td >{{product.name}}</td><td><app-products-price [price]="product.price"/></td><td>{{product.category}}</td><td class="small">{{product.inStock}}</td><td class="small"><input type="checkbox"></td></tr>
+    <tr (click)="handleAside(product, $event)"><td >{{product.name}}</td><td><app-products-price [price]="product.price"/></td><td>{{product.category}}</td><td class="small">{{product.inStock}}</td><td class="small"><input type="checkbox"></td></tr>
     }
 </table>
 

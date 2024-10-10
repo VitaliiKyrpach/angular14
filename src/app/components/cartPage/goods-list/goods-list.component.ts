@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CartServiceService } from '../../../services/cart-service.service';
-import { Goods } from '../../../interfaces/interfaces';
+import { Action, Goods } from '../../../interfaces/interfaces';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -12,16 +12,17 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class GoodsListComponent {
   public goods: Goods[] = [];
+  public Action = Action;
 
   constructor(private cartService: CartServiceService) {
     this.goods = this.cartService.getGoods();
   }
 
-  public addGoods(item: Goods) {
+  public addGoods(item: Goods): void {
     item.isAdded = true;
     this.cartService.addToCart(item);
   }
-  public handleAction(item: Goods, action: 'inc' | 'dec') {
+  public handleAction(item: Goods, action: Action): void {
     this.cartService.handleQty(item, action);
   }
 }

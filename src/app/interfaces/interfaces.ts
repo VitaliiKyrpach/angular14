@@ -38,3 +38,8 @@ export interface Product {
   inStock: 'Yes' | 'No', 
   rating: number
 }
+
+export enum Action {
+  INC = 'inc',
+  DEC = 'dec'
+}

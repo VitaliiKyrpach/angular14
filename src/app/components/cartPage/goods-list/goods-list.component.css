@@ -1,0 +1,34 @@
+.goods-title{
+    margin-bottom: 5px;
+}
+.goods-item{
+    width: 90px;
+    height: 110px;
+    border: 1px solid rgb(198, 198, 198);
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px 5px 5px;
+}
+.goods-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 5px;
+    width: 190px;
+}
+.item-name{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+.item-price{
+    margin-top: 20px;
+    text-align: center;
+}
+.item-actions{
+    display: flex;
+    justify-content: center;
+}
+.btn-action{
+    width: 30px;
+}

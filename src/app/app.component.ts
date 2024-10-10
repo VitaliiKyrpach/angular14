@@ -11,11 +11,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class AppComponent {
   title: string = 'angular learn';
   public category!: string;
-  // public works = {
-  //   classWork: ['Todo List'],
-  //   homeWork: ['Homework 3'],
-  // };
-  public handleCats(category: string) {
+
+  public handleCats(category: string): void {
     this.category = category;
   }
 }

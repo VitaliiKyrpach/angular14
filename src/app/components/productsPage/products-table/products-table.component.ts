@@ -18,8 +18,12 @@ export class ProductsTableComponent {
   constructor(private productService: ProductsServiceService){
     this.products = productService.getProducts()
   }
-  public handleAside(product: Product):void{
-    this.dispatchProduct.emit(product)
+  public handleAside(product: Product, e: Event):void{
+    const target = e.target as HTMLElement;
+    const input = target.tagName === 'INPUT'
+    if(!input){
+      this.dispatchProduct.emit(product)
+    }
     
   }
 }

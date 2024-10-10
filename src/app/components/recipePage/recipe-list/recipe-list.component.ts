@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Recipe } from '../../../interfaces/interfaces';
@@ -12,7 +12,7 @@ import { RecipeServiceService } from '../../../services/recipe-service.service';
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css'
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit {
   public recipes: Recipe[]=[]
   constructor(private recipeService: RecipeServiceService){
     this.recipes = this.recipeService.getRecipes()

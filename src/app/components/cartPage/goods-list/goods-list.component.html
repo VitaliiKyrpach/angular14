@@ -1,17 +1,22 @@
-<ul>
+<div class="goods">
+<h2 class="goods-title">Goods</h2>
+<ul class="goods-list">
   @for(good of goods; track good.name){
-  <li>
-    <p>{{ good.name }}</p>
-    <p>{{good.price | currency}}</p>
-    <button type="button" (click)="addGoods(good)" [disabled]="good.isAdded">
-      add to cart
-    </button>
-    @if(good.isAdded){
-    <div>
-      <button type="button" (click)="handleAction(good, 'inc')">+</button>
-      <button type="button" (click)="handleAction(good, 'dec')">-</button>
-    </div>
-    }
-  </li>
+    <li class="goods-item">
+      <p class="item-name">{{ good.name }}</p>
+      <p class="item-price">{{good.price | currency}}</p>
+      
+      @if(good.isAdded){
+        <div class="item-actions">
+          <button class="btn-action" type="button" (click)="handleAction(good, Action.INC)">+</button>
+          <button class="btn-action" type="button" (click)="handleAction(good, Action.DEC)">-</button>
+        </div>
+      } @else{
+        <button type="button" (click)="addGoods(good)" [disabled]="good.isAdded">
+          add to cart
+        </button>
+      }
+    </li>
   }
 </ul>
+</div>

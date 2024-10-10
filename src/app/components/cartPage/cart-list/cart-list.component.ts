@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from '../../../services/cart-service.service';
 import { Goods } from '../../../interfaces/interfaces';
 import { CurrencyPipe } from '@angular/common';
@@ -11,7 +11,7 @@ import { CurrencyPipe } from '@angular/common';
   templateUrl: './cart-list.component.html',
   styleUrl: './cart-list.component.css',
 })
-export class CartListComponent {
+export class CartListComponent implements OnInit{
   public total!: number;
   public cart: Goods[] = [];
 
@@ -26,7 +26,7 @@ export class CartListComponent {
     });
   }
 
-  public remove(good: Goods) {
+  public remove(good: Goods):void {
     this.cartService.removeFromCart(good);
   }
 
@@ -34,7 +34,7 @@ export class CartListComponent {
     return good.price * good.qty;
   }
 
-  public calcTotal() {
+  public calcTotal(): number {
     return this.cart.reduce((acc, item) => acc + item.price * item.qty, 0);
   }
 }

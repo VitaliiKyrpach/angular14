@@ -17,26 +17,30 @@ export class ProductsComponent {
   @HostListener('document:click', ['$event'])
     onClick(event: Event):void {
       const target = event.target as HTMLElement;
-
-      if(target.parentElement?.tagName === 'TR' || target.parentElement?.tagName === 'TD' || target.parentElement?.tagName === "APP-SIDE-MENU"){
+      const tr = target.parentElement?.tagName === 'TR';
+      const td = target.parentElement?.tagName === 'TD';
+      const menu = target.parentElement?.tagName === "APP-SIDE-MENU";
+      
+      if(tr || td || menu){
         return
       }else{
         this.product = null
       }
     }
 
-  public receiveProduct(product: Product): void{
-    if(this.product === null){
-      this.product = product;
+    public receiveProduct(product: Product): void{
+    // if(this.product === null){
+    //   this.product = product;
  
-    } else{
-      if(this.product.id === product.id){
+    // } else{
+    //   if(this.product.id === product.id){
   
-        this.product = null
-      }else{
-        this.product = product
-      }
-    }
+    //     this.product = null
+    //   }else{
+    //     this.product = product
+    //   }
+    // }
+    this.product = this.product?.id === product.id ? null : product;
   }
   
 }

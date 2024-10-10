@@ -1,15 +1,26 @@
-<ul>
-  @for(good of cart; track good.name){
-  <li>
-    <p>{{ good.name }}</p>
-    <p>Quantity: {{ good.qty }}</p>
-    <p>{{ price(good) | currency}}</p>
-    <button type="button" (click)="remove(good)">Remove</button>
-  </li>
-  }
-</ul>
-@if(total !== 0){
-    <p>Total: {{ total | currency }}</p>
-} @else{
-    <p>Total:</p>
-}
+<div class="cart">
+  <h2 class="cart-title">Cart</h2>
+  <div class="cart-header">
+    <p>name</p>
+    <p>amount</p>
+    <p>price</p>
+  </div>
+  <ul class="cart-list">
+    @for(good of cart; track good.name){
+      <li class="cart-item">
+        <p class="item-name">{{ good.name }}</p>
+        <p class="item-qty">{{ good.qty }}</p>
+        <p class="item-price">{{ price(good) | currency}}</p>
+        <button type="button" (click)="remove(good)">Remove</button>
+      </li>
+    }
+  </ul>
+  <div class="cart-total">
+    @if(total !== 0){
+      <p ><span class="total">Total:</span> {{ total | currency }}</p>
+    } @else{
+      <p class="total">Total:</p>
+    }
+  </div>
+</div>
+  
