@@ -4,6 +4,7 @@ import { RecipeComponent } from './components/recipePage/recipe/recipe.component
 import { HomeComponent } from './components/shared/home/home.component';
 import { CartComponent } from './components/cartPage/cart/cart.component';
 import { ProductsComponent } from './components/productsPage/products/products.component';
+import { GameComponent } from './components/gamePage/game/game.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'homework-4',
     component: ProductsComponent,
+  },
+  {
+    path: 'game',
+    component: GameComponent,
   },
 ];

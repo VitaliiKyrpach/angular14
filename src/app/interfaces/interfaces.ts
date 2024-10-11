@@ -43,3 +43,9 @@ export enum Action {
   INC = 'inc',
   DEC = 'dec'
 }
+
+export interface Game{
+  countComp: number,
+  countPlayer: number,
+  winer: any
+}
