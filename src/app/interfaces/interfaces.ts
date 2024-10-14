@@ -43,3 +43,8 @@ export enum Action {
   INC = 'inc',
   DEC = 'dec'
 }
+
+export interface RefProduct {
+  name: string,
+  price: number
+}

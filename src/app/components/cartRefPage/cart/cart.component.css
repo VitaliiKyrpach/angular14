@@ -1,0 +1,11 @@
+.cart-title{
+    margin-bottom: 5px;
+}
+.cart-list{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.cart-item{
+    display: flex;
+}
