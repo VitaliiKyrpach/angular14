@@ -5,6 +5,8 @@ import { HomeComponent } from './components/shared/home/home.component';
 import { CartComponent } from './components/cartPage/cart/cart.component';
 import { ProductsComponent } from './components/productsPage/products/products.component';
 import { ParentComponent } from './components/cartRefPage/parent/parent.component';
+import { GameComponent } from './components/gamePage/game/game.component';
+
 
 export const routes: Routes = [
   {
@@ -30,5 +32,9 @@ export const routes: Routes = [
   {
     path: 'homework-5',
     component: ParentComponent,
+  },
+  {
+    path: 'game',
+    component: GameComponent,
   },
 ];

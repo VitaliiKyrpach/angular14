@@ -48,3 +48,10 @@ export interface RefProduct {
   name: string,
   price: number
 }
+
+export interface Game{
+  countComp: number,
+  countPlayer: number,
+  winer: any
+}
+
