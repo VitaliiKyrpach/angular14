@@ -8,4 +8,13 @@
 }
 .cart-item{
     display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: white;
+    border-radius: 15px;
+}
+.cartBtn{
+    margin-top: 10px;
+    cursor: pointer;
 }

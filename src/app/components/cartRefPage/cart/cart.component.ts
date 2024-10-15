@@ -11,16 +11,21 @@ import { CommonModule } from '@angular/common';
     <h2 class='cart-title'>Your Cart</h2>
     <div *ngIf="cart.length > 0; else emptyCart">
       <ul class="cart-list">
-        <li class="cart-item" *ngFor="let item of cartItems">
+        <li class="cart-item" *ngFor="let item of cart">
           <p>{{ item.name }}</p>
           <p> - {{ item.price }} $</p>
-           
+          <p *ngIf="item.name === 'Phone'; else laptopAmount">
+          x{{cartPhone}}
+          </p>
         </li>
       </ul>
     </div>
-    <button *ngIf="cart.length > 0" type='button' (click)='clearCart()'>Clear cart</button>
+    <button class='cartBtn' *ngIf="cart.length > 0" type='button' (click)='clearCart()'>Clear cart</button>
     <ng-template #emptyCart>
       <p>The cart is empty.</p>
+    </ng-template>
+    <ng-template #laptopAmount>
+      <p> x{{cartLaptop}}</p>
     </ng-template>
   `,
   styleUrls: ['./cart.component.css'],
@@ -35,6 +40,9 @@ export class CartComponent implements OnInit, OnChanges {
   //в яку записується вхідний пропс cartItems.
 
   public cart: RefProduct[] = [];
+  public cartPhone: number = 0;
+  public cartLaptop: number = 0;
+
 
   ngOnInit() {
     this.cart = this.cartItems
@@ -42,8 +50,31 @@ export class CartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['cartItems']) {
-      this.cart = this.cartItems
+      this.handleCartList()
     }
+  }
+
+  //додав метод обробки списку товарів,
+  //щоб відображались тільки унікальні товари та їхня кількість
+  private handleCartList():void{
+    this.cartPhone = 0;
+    this.cartLaptop = 0;
+    const uniqueProducts = this.cartItems.filter((product, index, array) => 
+      index === array.findIndex((p) => p.name === product.name)
+    );
+    
+    this.cart = uniqueProducts
+    this.cartItems.filter(item => {
+      switch(item.name){
+        case "Phone": 
+        this.cartPhone += 1;
+        break;
+        case "Laptop": 
+        this.cartLaptop += 1;
+        break;
+      }
+    })
+    
   }
 
   //додав метод очищення корзини
