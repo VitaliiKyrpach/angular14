@@ -1,0 +1,37 @@
+<section>
+    <table>
+        <tr><td >Продукт</td><td>SKU</td><td>Ціна / Дисконт</td><td>Країна</td><td>Теги</td><td>Дії</td></tr>
+        @for(product of products; track product.productID){
+            <tr>
+                <td>
+                    <img class="productImg"  
+                    alt="product image"
+                    [src]="product.image">
+                    <p>{{product.name}}</p></td>
+                <td><p>{{product.sku}}</p></td>
+                <td><p>{{product.price}}</p>
+                    @if(product.discount > 0){
+                        <p>(-{{product.discount}}%)</p>
+                    }
+                </td>
+                <td>
+                    @if(product.countryCode !== "UK"){
+                        <img class="countryFlag"
+                        [alt]="product.countryCode"
+                        [src]="'http://purecatamphetamine.github.io/country-flag-icons/3x2/' + product.countryCode + '.svg'"/>
+                    } @else{
+                        <img class="countryFlag"
+                        [alt]="product.countryCode"
+                        src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"/>
+                    }
+                </td>
+                <td>
+                    @for(tag of product.tags; track tag){
+                        <p>{{tag}}</p>
+                    }
+                </td>
+                <td><button type="button">actions</button></td>
+            </tr>
+        }
+    </table>
+</section>
