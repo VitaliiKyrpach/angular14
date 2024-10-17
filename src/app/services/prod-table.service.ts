@@ -7,7 +7,7 @@ import { ProductTable } from '../interfaces/interfaces';
 export class ProdTableService {
   private products: ProductTable[] = [
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 1',
         discount: 10,
         price: 100,
@@ -20,7 +20,7 @@ export class ProdTableService {
         tags: ['electronics', 'new', 'sale']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 2',
         discount: 5,
         price: 150,
@@ -33,7 +33,7 @@ export class ProdTableService {
         tags: ['furniture', 'popular']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 3',
         discount: 15,
         price: 200,
@@ -46,7 +46,7 @@ export class ProdTableService {
         tags: ['clothing', 'discount']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 4',
         discount: 0,
         price: 300,
@@ -59,7 +59,7 @@ export class ProdTableService {
         tags: ['sports', 'new']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 5',
         discount: 25,
         price: 80,
@@ -72,7 +72,7 @@ export class ProdTableService {
         tags: ['outdoor', 'clearance']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 6',
         discount: 10,
         price: 120,
@@ -85,7 +85,7 @@ export class ProdTableService {
         tags: ['kitchen', 'best-seller']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 7',
         discount: 30,
         price: 50,
@@ -98,7 +98,7 @@ export class ProdTableService {
         tags: ['beauty', 'gift']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 8',
         discount: 12,
         price: 90,
@@ -111,7 +111,7 @@ export class ProdTableService {
         tags: ['clothing', 'eco-friendly']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 9',
         discount: 0,
         price: 500,
@@ -124,7 +124,7 @@ export class ProdTableService {
         tags: ['luxury', 'premium']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 10',
         discount: 20,
         price: 75,
@@ -137,7 +137,7 @@ export class ProdTableService {
         tags: ['tech', 'sale']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 11',
         discount: 18,
         price: 130,
@@ -150,7 +150,7 @@ export class ProdTableService {
         tags: ['home', 'popular']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 12',
         discount: 35,
         price: 55,
@@ -163,7 +163,7 @@ export class ProdTableService {
         tags: ['fashion', 'limited']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 13',
         discount: 0,
         price: 600,
@@ -176,7 +176,7 @@ export class ProdTableService {
         tags: ['gadgets', 'new']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 14',
         discount: 8,
         price: 95,
@@ -189,7 +189,7 @@ export class ProdTableService {
         tags: ['sports', 'sale']
     },
     {
-        image: 'https://via.placeholder.com/150',
+        image: 'https://placehold.co/50x50?text=50x50',
         name: 'Product 15',
         discount: 22,
         price: 110,

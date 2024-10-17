@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
     <table>
         <tr><td >Продукт</td><td>SKU</td><td>Ціна / Дисконт</td><td>Країна</td><td>Теги</td><td>Дії</td></tr>
         @for(product of products; track product.productID){
@@ -30,8 +30,94 @@
                         <p>{{tag}}</p>
                     }
                 </td>
-                <td><button type="button">actions</button></td>
+                <td><button type="button">actions</button>
+                 @if(isShown){
+                 <div class="actions"><button type="button">Редагувати</button>
+                    <button type="button">Видалити</button>
+                    </div>
+                }
+                </td>
             </tr>
         }
     </table>
-</section>
+</section> -->
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Продукт </th>
+      <td mat-cell *matCellDef="let element" >
+        <div class="nameCell">
+            <img class="productImg"  
+            alt="product image"
+            [src]="element.image">
+            <p>{{element.name}}</p> 
+        </div>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="SKU">
+      <th mat-header-cell *matHeaderCellDef> SKU </th>
+      <td mat-cell *matCellDef="let element"><p>{{element.sku}}</p></td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Ціна / Дисконт </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="priceCell">
+            <p>{{element.price}}грн</p>
+            @if(element.discount > 0){
+                <p>(-{{element.discount}}%)</p>
+            }
+        </div>
+         </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> Країна </th>
+      <td mat-cell *matCellDef="let element"> @if(element.countryCode !== "UK"){
+        <img class="countryFlag"
+        [alt]="element.countryCode"
+        [src]="'http://purecatamphetamine.github.io/country-flag-icons/3x2/' + element.countryCode + '.svg'"/>
+    } @else{
+        <img class="countryFlag"
+        [alt]="element.countryCode"
+        src="http://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg"/>
+    }</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tag">
+        <th mat-header-cell *matHeaderCellDef> Теги </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-chip-set aria-label="tag selection">
+                @for(tag of element.tags; track tag){
+                <mat-chip class="mat-chip" style="font-size: 100px;">{{tag}}</mat-chip>
+            }
+              </mat-chip-set>  
+        </td>
+      </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Дії </th>
+        <td mat-cell *matCellDef="let element" class="actionCell"><button class="burgerBtn" type="button" (click)="isShownToggle(element.productID)"><img class="logoImg" src="burgerBtn.svg" alt="Description" /></button>
+        @if(isShown === element.productID){
+            <div class="actions">
+                <div class="btnContainer">
+                    <button class="actionBtn" type="button">
+                        <img class="actionImg" src="pen.svg" alt="Description" />
+                        <p>Редагувати</p></button>
+                        <span class="tooltip-text">В розробці</span>
+                </div>
+                <div class="btnContainer"> 
+                    <button class="actionBtn" type="button">
+                        <img class="actionImg" src="trash.svg" alt="Description" />
+                        <p>Видалити</p></button>
+                        <span class="tooltip-text">В розробці</span>
+                </div>
+            </div>
+        }
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
