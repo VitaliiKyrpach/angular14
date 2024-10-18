@@ -1,0 +1,66 @@
+.burgerBtn{
+    background-color: transparent;
+    border: none;
+    width: 35px;
+    cursor: pointer;
+}
+.actionCell{
+    position: relative;
+    overflow: visible;
+}
+.actions{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    z-index: 2;
+    background-color: #fff;
+    padding: 10px 15px;
+    width: 125px;
+    box-shadow: 0px 2px 5px -1px #3f3f3f;
+    border-radius: 5px;
+}
+.actionBtn{
+    display: flex;
+    gap: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.actionImg{
+    display: flex;
+    align-items: center;
+}
+.btnContainer{
+    overflow: visible;
+}
+.tooltip-text {
+    width: 90px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 10;
+    bottom: 40px;
+    left: 70%;
+    margin-left: -40px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+::ng-deep .mat-mdc-menu-panel.overflow{
+    overflow: visible;
+}
+::ng-deep .overflow .mat-mdc-menu-content{
+    padding: 0;
+}
+.btnContainer:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+::ng-deep .actionCell button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
