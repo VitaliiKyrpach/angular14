@@ -1,15 +1,52 @@
-<section>
-  <div>
-    <p>Score Player {{ countPlayer }}</p>
-    <p>Score Computer {{ countComp }}</p>
+<section class="game">
+  <div class="tablo">
+    <p class="gamer">Player</p>
+    <p class="count">{{ countPlayer }} : {{ countComp }}</p>
+    <p class="gamer">Computer</p>
   </div>
-  <button>Start</button>
-  <button>Reset</button>
-  <label for="">Time in ms</label>
-  <input type="number" />
-  <div class="grid">
-    @for(item of gridCell; track idx; let idx = $index){
-    <div>1</div>
+  <div class="grid" (click)="handleCell($event)">
+    @for(item of gridCell; track item.id;){
+    <div class="cell" [ngClass]="item.mark" [id]="item.id"></div>
     }
   </div>
+
+  <label class="input"
+    >Time in ms
+    <input
+      type="number"
+      [ngModel]="time !== 0 ? time : null"
+      (ngModelChange)="time = $event"
+      placeholder="enter more than 0"
+    />
+  </label>
+
+  <div class="buttons">
+    <button
+      class="gameBtn"
+      type="button"
+      (click)="startGame()"
+      [disabled]="time < 1"
+    >
+      Start
+    </button>
+    <button
+      class="gameBtn"
+      type="button"
+      (click)="reset()"
+      [disabled]="!intervalId"
+    >
+      Reset
+    </button>
+  </div>
+  @if(winner){
+  <div class="backdrop">
+    <div class="modal">
+      <p class="win">Congratulations!</p>
+      <p>
+        <span class="winner">{{ winner }}</span> won the game!
+      </p>
+      <button class="btn" type="button" (click)="reset()">Finish game</button>
+    </div>
+  </div>
+  }
 </section>

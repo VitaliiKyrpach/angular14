@@ -30,29 +30,35 @@ export interface Goods {
 }
 
 export interface Product {
-  id: number, 
-  name: string, 
-  price: number,
-  category: string,
-  description: string,
-  inStock: 'Yes' | 'No', 
-  rating: number
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  description: string;
+  inStock: 'Yes' | 'No';
+  rating: number;
 }
 
 export enum Action {
   INC = 'inc',
-  DEC = 'dec'
+  DEC = 'dec',
 }
 
 export interface RefProduct {
-  name: string,
-  price: number
+  name: string;
+  price: number;
 }
 
-export interface Game{
-  countComp: number,
-  countPlayer: number,
-  winer: any
+
+export interface Cell {
+  id: number;
+  mark: Mark;
+}
+export enum Mark {
+  NONE = 'none',
+  USER = 'player',
+  COMP = 'computer',
+  PICK = 'pick',
 }
 
 export interface ProductTable {
@@ -68,4 +74,3 @@ export interface ProductTable {
   itemUrl: string;
   tags: string[];
 }
-
