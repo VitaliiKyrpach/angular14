@@ -1,7 +1,10 @@
 .nameCell{
     display: flex;
     align-items: center;
-    gap: 10px
+    justify-content: flex-start;
+    padding-left: 2px;
+    gap: 6px;
+    min-width: 124px
 }
 .productImg{
     width: 50px;

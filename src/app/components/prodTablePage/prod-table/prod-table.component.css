@@ -1,12 +1,16 @@
 td{
     font-size: 12px;
-    padding: 0 10px;
+    padding: 0;
+    /* display: flex;
+    justify-content: center; */
 }
 th{
     padding: 0 10px;
     text-align: center;
 }
-
+/* table{
+    border: 2px solid black;
+} */
 
 
 

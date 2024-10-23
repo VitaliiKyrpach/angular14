@@ -6,7 +6,7 @@ import { CartComponent } from './components/cartPage/cart/cart.component';
 import { ProductsComponent } from './components/productsPage/products/products.component';
 import { ParentComponent } from './components/cartRefPage/parent/parent.component';
 import { GameComponent } from './components/gamePage/game/game.component';
-import { ProdTableComponent } from './components/prodTablePage/prod-table/prod-table.component';
+import { ProdComponent } from './components/prodTablePage/prod/prod.component';
 
 
 export const routes: Routes = [
@@ -40,6 +40,6 @@ export const routes: Routes = [
   },
   {
     path: 'homework-6',
-    component: ProdTableComponent,
+    component: ProdComponent,
   },
 ];

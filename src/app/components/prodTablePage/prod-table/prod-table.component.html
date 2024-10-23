@@ -1,5 +1,4 @@
-<section>
-<table mat-table [dataSource]="products" class="mat-elevation-z8">
+<table mat-table [dataSource]="products" class="table">
   
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Продукт </th>
@@ -46,4 +45,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</section>
+

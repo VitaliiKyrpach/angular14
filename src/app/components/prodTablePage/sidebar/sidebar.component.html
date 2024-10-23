@@ -1,0 +1,37 @@
+
+  <mat-sidenav-container class="sidebar" autosize>
+    <mat-sidenav #sidenav [opened]="opened" mode="side" class="sidebarNav">
+      <mat-nav-list class="sideList">            
+            <a mat-list-item>
+              <span class="entry">
+                <span>Головна</span>
+              </span>
+            </a>
+            <a mat-list-item>
+                <span class="entry">
+                  <span>Продукти</span>
+                </span>
+              </a>
+              <a mat-list-item>
+                <span class="entry">
+                  <span>Замовлення</span>
+                </span>
+              </a>
+              <a mat-list-item>
+                <span class="entry">
+                  <span>Клієнти</span>
+                </span>
+              </a>
+              <a mat-list-item>
+                <span class="entry">  
+                  <span>Налаштування</span>
+                </span>
+              </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- <router-outlet/> -->
+      <p><button mat-button (click)="opened = !opened" class="navBtn"><mat-icon class="navBtnIcon">menu</mat-icon>Menu</button></p>
+      <app-prod-table/>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
