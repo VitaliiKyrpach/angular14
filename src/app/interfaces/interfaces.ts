@@ -74,3 +74,10 @@ export interface ProductTable {
   itemUrl: string;
   tags: string[];
 }
+
+export interface ProdItem {
+  name: string,
+      price: number,
+      discount: number,
+      sku: string
+}

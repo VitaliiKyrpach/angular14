@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ProductTable } from '../interfaces/interfaces';
+import { ProdItem, ProductTable } from '../interfaces/interfaces';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -202,7 +203,19 @@ export class ProdTableService {
         tags: ['garden', 'special-offer']
     }
 ];
+
+private item!:ProdItem
+private tableItem = new BehaviorSubject<ProdItem>(this.item)
+
 getProducts(): ProductTable[]{
   return this.products
+}
+
+public getTableItem(): Observable<ProdItem>{
+    return this.tableItem.asObservable()
+}
+public setItem(item:ProdItem): void{
+    this.item = item
+    this.tableItem.next(this.item)
 }
 }

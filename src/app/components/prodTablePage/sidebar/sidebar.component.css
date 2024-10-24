@@ -1,9 +1,5 @@
-/* .sidebar{
-    width: 200px;
-} */
  .sidebarNav{
     width: 130px;
-    /* height: 500px; */
     background-color: #D6EEEE;
     border-radius: 0%;
  }
@@ -21,6 +17,10 @@
     font-size: 20px;
     border: none;
     background-color: transparent;
+    cursor: pointer;
+ }
+ .sideLink{
+   cursor: pointer;
  }
  .navBtnIcon{
     width: 16px;

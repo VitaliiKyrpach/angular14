@@ -31,8 +31,15 @@
     display: flex;
     align-items: center;
 }
-.btnContainer{
+::ng-deep .btnContainer.mat-mdc-button:not(:disabled){
     overflow: visible;
+    color: black;
+}
+::ng-deep .btnContainer.mat-mdc-button{
+    border-radius: 0;
+}
+::ng-deep .btnContainer.mat-mdc-button:hover {
+ background-color: rgba(26, 27, 31, 0.08);
 }
 .tooltip-text {
     width: 90px;
@@ -63,4 +70,7 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+::ng-deep .btnContainer.mat-mdc-menu-item{
+    overflow: visible;
 }
