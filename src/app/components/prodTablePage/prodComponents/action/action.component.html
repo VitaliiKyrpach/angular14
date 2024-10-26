@@ -1,16 +1,19 @@
 <div class="actionCell">
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu" class="overflow">
-        <button mat-button (click)="openDialog()" class="btnContainer">
-          <mat-icon>create</mat-icon>
-          <span>Редагувати</span>
-        </button>
-        <button mat-menu-item class="btnContainer">
-          <mat-icon>delete</mat-icon>
-          <span>Видалити</span>
-          <span class="tooltip-text">В розробці</span>
-        </button>
-      </mat-menu>
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="overflow">
+    <button mat-button (click)="openDialog()" class="btnContainer">
+      <mat-icon>create</mat-icon>
+      <span>Редагувати</span>
+    </button>
+    <button mat-menu-item class="btnContainer" (click)="delete(propsId)">
+      <mat-icon>delete</mat-icon>
+      Видалити
+    </button>
+  </mat-menu>
 </div>

@@ -2,22 +2,22 @@
 <mat-dialog-content class="modalContent">
     <mat-form-field>
         <mat-label>Назва</mat-label>
-        <input matInput [value]="name">
+        <input matInput [(ngModel)]="name">
       </mat-form-field> 
       <mat-form-field>
         <mat-label>Ціна</mat-label>
-        <input type="number" matInput [value]="price">
+        <input type="number" matInput [(ngModel)]="price">
       </mat-form-field>  
       <mat-form-field>
         <mat-label>Знижка (%)</mat-label>
-        <input type="number" matInput [value]="discount">
+        <input type="number" matInput [(ngModel)]="discount">
       </mat-form-field>  
       <mat-form-field>
         <mat-label>SKU</mat-label>
-        <input matInput [value]="sku">
+        <input matInput [(ngModel)]="sku">
       </mat-form-field>      
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Скасувати</button>
-  <button mat-button class="btnModal" ><span>Зберегти</span> <span class="tooltip-text">В розробці</span></button>
+  <button mat-button class="btnModal" (click)="handleEdit()" >Зберегти</button>
 </mat-dialog-actions>

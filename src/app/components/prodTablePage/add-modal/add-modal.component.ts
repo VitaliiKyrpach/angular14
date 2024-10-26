@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   MatDialog,
   MatDialogActions,
@@ -11,9 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProdTableService } from '../../../services/prod-table.service';
 import { FormsModule } from '@angular/forms';
+import {
+  FileInput,
+  MaterialFileInputModule,
+} from 'ngx-custom-material-file-input';
 
 @Component({
-  selector: 'app-prod-modal',
+  selector: 'app-add-modal',
   standalone: true,
   imports: [
     MatDialogTitle,
@@ -24,40 +28,47 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    MaterialFileInputModule,
   ],
-  templateUrl: './prod-modal.component.html',
-  styleUrl: './prod-modal.component.css',
+  templateUrl: './add-modal.component.html',
+  styleUrl: './add-modal.component.css',
 })
-export class ProdModalComponent implements OnInit {
+export class AddModalComponent {
   public name!: string;
   public price!: number;
   public discount!: number | null;
   public sku!: string;
-  private id!: number;
+  public country!: string;
+  public tags!: string[];
+  // public image!: File;
 
   constructor(
     private ProdTabService: ProdTableService,
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    this.ProdTabService.getTableItem().subscribe((item) => {
-      this.name = item.name;
-      this.price = item.price;
-      this.discount = item.discount;
-      this.sku = item.sku;
-      this.id = item.id;
-    });
-  }
-  public handleEdit(): void {
-    const item = {
+  // onFileSelected(event: Event) {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.files && input.files.length > 0) {
+  //     this.image = input.files[0]; // Отримуємо файл
+  //     console.log(this.image);
+  //   }
+  // }
+
+  handleAdd(): void {
+    const newItem = {
       name: this.name,
       price: this.price,
       discount: this.discount,
       sku: this.sku,
-      id: this.id,
+      countryCode: this.country,
+      tags: this.tags,
+      itemUrl: 'https://example.com/product-20',
+      // image: this.image,
+      image: 'https://via.placeholder.com/50',
     };
-    this.ProdTabService.editItem(item);
+    console.log(newItem);
+    this.ProdTabService.addItem(newItem);
     this.dialog.closeAll();
   }
 }

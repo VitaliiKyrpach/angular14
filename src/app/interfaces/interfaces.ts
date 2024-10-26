@@ -49,7 +49,6 @@ export interface RefProduct {
   price: number;
 }
 
-
 export interface Cell {
   id: number;
   mark: Mark;
@@ -76,8 +75,9 @@ export interface ProductTable {
 }
 
 export interface ProdItem {
-  name: string,
-      price: number,
-      discount: number,
-      sku: string
+  name: string;
+  price: number;
+  discount: number | null;
+  sku: string;
+  id: number;
 }

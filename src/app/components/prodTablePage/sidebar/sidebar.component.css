@@ -1,38 +1,42 @@
- .sidebarNav{
-    width: 130px;
-    background-color: #D6EEEE;
-    border-radius: 0%;
- }
- .sideList{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 20px;
-    padding-left: 6px;
- }
- .navBtn{
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    font-size: 20px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
- }
- .sideLink{
-   cursor: pointer;
- }
- .navBtnIcon{
-    width: 16px;
-    height: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
- .mat-drawer-content{
-    overflow: visible;
-    z-index: 10;
- } 
- .mat-drawer-container{
-    background-color: transparent;
- }
+.sidebarNav {
+  width: 130px;
+  background-color: #d6eeee;
+  border-radius: 0%;
+}
+.sideList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+  padding-left: 6px;
+}
+.navBtn {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.sideLink {
+  cursor: pointer;
+}
+.navBtns {
+  display: flex;
+  justify-content: space-between;
+}
+.navBtnIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mat-drawer-content {
+  overflow: visible;
+  z-index: 10;
+}
+.mat-drawer-container {
+  background-color: transparent;
+}
