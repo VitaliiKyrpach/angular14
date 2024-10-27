@@ -11,10 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProdTableService } from '../../../services/prod-table.service';
 import { FormsModule } from '@angular/forms';
-import {
-  FileInput,
-  MaterialFileInputModule,
-} from 'ngx-custom-material-file-input';
+import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
 
 @Component({
   selector: 'app-add-modal',
@@ -40,20 +37,19 @@ export class AddModalComponent {
   public sku!: string;
   public country!: string;
   public tags!: string[];
-  // public image!: File;
+  public image!: File;
 
   constructor(
     private ProdTabService: ProdTableService,
     private dialog: MatDialog
   ) {}
 
-  // onFileSelected(event: Event) {
-  //   const input = event.target as HTMLInputElement;
-  //   if (input.files && input.files.length > 0) {
-  //     this.image = input.files[0]; // Отримуємо файл
-  //     console.log(this.image);
-  //   }
-  // }
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.image = input.files[0];
+    }
+  }
 
   handleAdd(): void {
     const newItem = {
@@ -64,10 +60,10 @@ export class AddModalComponent {
       countryCode: this.country,
       tags: this.tags,
       itemUrl: 'https://example.com/product-20',
-      // image: this.image,
-      image: 'https://via.placeholder.com/50',
+      imageUrl: this.image,
+      // image: 'https://via.placeholder.com/50',
     };
-    console.log(newItem);
+
     this.ProdTabService.addItem(newItem);
     this.dialog.closeAll();
   }
