@@ -1,3 +1,7 @@
+.sidebar {
+  height: 500px;
+  overflow: hidden;
+}
 .sidebarNav {
   width: 130px;
   background-color: #d6eeee;

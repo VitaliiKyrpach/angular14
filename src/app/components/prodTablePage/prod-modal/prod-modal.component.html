@@ -1,23 +1,77 @@
+@if(data.mode === 'edit'){
 <h2 mat-dialog-title>Редагувати продукт</h2>
 <mat-dialog-content class="modalContent">
-    <mat-form-field>
-        <mat-label>Назва</mat-label>
-        <input matInput [(ngModel)]="name">
-      </mat-form-field> 
-      <mat-form-field>
-        <mat-label>Ціна</mat-label>
-        <input type="number" matInput [(ngModel)]="price">
-      </mat-form-field>  
-      <mat-form-field>
-        <mat-label>Знижка (%)</mat-label>
-        <input type="number" matInput [(ngModel)]="discount">
-      </mat-form-field>  
-      <mat-form-field>
-        <mat-label>SKU</mat-label>
-        <input matInput [(ngModel)]="sku">
-      </mat-form-field>      
+  <mat-form-field>
+    <mat-label>Назва</mat-label>
+    <input matInput [(ngModel)]="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Ціна</mat-label>
+    <input type="number" matInput [(ngModel)]="price" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Знижка (%)</mat-label>
+    <input type="number" matInput [(ngModel)]="discount" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>SKU</mat-label>
+    <input matInput [(ngModel)]="sku" />
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Скасувати</button>
-  <button mat-button class="btnModal" (click)="handleEdit()" >Зберегти</button>
+  <button mat-button class="btnModal" (click)="handleEdit()">Зберегти</button>
 </mat-dialog-actions>
+} @else{
+<h2 mat-dialog-title>Додати продукт</h2>
+<mat-dialog-content class="modalContent">
+  <mat-form-field>
+    <mat-label>Назва</mat-label>
+    <input required matInput [(ngModel)]="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Ціна</mat-label>
+    <input required type="number" matInput [(ngModel)]="price" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Знижка (%)</mat-label>
+    <input required type="number" matInput [(ngModel)]="discount" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>SKU</mat-label>
+    <input required matInput [(ngModel)]="sku" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Країна</mat-label>
+    <input required matInput [(ngModel)]="country" placeholder="us uk ca de" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Теги</mat-label>
+    <input
+      required
+      matInput
+      [(ngModel)]="tags"
+      placeholder="вводьте через кому"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Зображення</mat-label>
+    <ngx-mat-file-input
+      [(ngModel)]="image"
+      valuePlaceholder="image"
+      (change)="onFileSelected($event)"
+    />
+  </mat-form-field>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Скасувати</button>
+    <button
+      mat-button
+      class="btnModal"
+      (click)="handleAdd()"
+      [disabled]="!name || !price || !discount || !sku || !country || !tags"
+    >
+      Додати
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>
+}

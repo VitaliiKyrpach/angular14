@@ -53,8 +53,8 @@
   flex-direction: column;
   gap: 5px;
 }
-.linkList li{
-    text-align: center;
+.linkList li {
+  text-align: center;
 }
 .categories {
   position: relative;

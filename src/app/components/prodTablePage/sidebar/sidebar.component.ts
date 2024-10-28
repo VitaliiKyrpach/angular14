@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import { ProdTableComponent } from '../prod-table/prod-table.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
-import { AddModalComponent } from '../add-modal/add-modal.component';
+import { ProdModalComponent } from '../prod-modal/prod-modal.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -26,6 +26,8 @@ export class SidebarComponent {
   constructor(private dialog: MatDialog) {}
 
   openDialog(): void {
-    this.dialog.open(AddModalComponent);
+    this.dialog.open(ProdModalComponent, {
+      data: { mode: 'new' },
+    });
   }
 }

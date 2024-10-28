@@ -35,7 +35,9 @@ export class ActionComponent {
       id: this.propsId,
     };
     this.ProdTabService.setItem(item);
-    this.dialog.open(ProdModalComponent);
+    this.dialog.open(ProdModalComponent, {
+      data: { mode: 'edit' },
+    });
   }
   public delete(id: number): void {
     this.ProdTabService.deleteItem(id);
