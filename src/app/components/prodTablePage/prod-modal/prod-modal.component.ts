@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProdTableService } from '../../../services/prod-table.service';
 import { FormsModule } from '@angular/forms';
 import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-prod-modal',
@@ -27,6 +28,7 @@ import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
     MatFormFieldModule,
     FormsModule,
     MaterialFileInputModule,
+    CommonModule,
   ],
   templateUrl: './prod-modal.component.html',
   styleUrl: './prod-modal.component.css',
@@ -40,6 +42,7 @@ export class ProdModalComponent implements OnInit {
   public tags!: string[];
   public image!: File;
   private id!: number;
+  public tab: 'cat' | 'form' = 'form';
 
   constructor(
     private ProdTabService: ProdTableService,
@@ -74,7 +77,8 @@ export class ProdModalComponent implements OnInit {
       sku: this.sku,
       id: this.id,
     };
-    this.ProdTabService.editItem(item);
+    console.log(item);
+    // this.ProdTabService.editItem(item);
     this.dialog.closeAll();
   }
 
@@ -93,5 +97,8 @@ export class ProdModalComponent implements OnInit {
 
     this.ProdTabService.addItem(newItem);
     this.dialog.closeAll();
+  }
+  public setTab(tab: 'cat' | 'form'): void {
+    this.tab = tab;
   }
 }

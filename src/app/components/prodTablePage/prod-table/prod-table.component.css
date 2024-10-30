@@ -3,7 +3,7 @@ td {
   padding: 0;
 }
 th {
-  padding: 0 10px;
+  padding: 0 5px;
   text-align: center;
 }
 tr {
@@ -32,16 +32,19 @@ tr {
   text-align: center;
 }
 ::ng-deep .mat-column-name {
-  width: 124px;
+  width: 118px;
 }
 ::ng-deep .mat-column-country {
-  width: 13%;
+  width: 10%;
 }
 ::ng-deep .mat-column-action {
   width: 45px;
 }
 ::ng-deep .mat-column-tag {
-  width: 28%;
+  width: 16%;
+}
+::ng-deep .mat-column-cat {
+  width: 20%;
 }
 /* ::ng-deep .mat-column-price {
   width: 110px;

@@ -1,22 +1,44 @@
 @if(data.mode === 'edit'){
 <h2 mat-dialog-title>Редагувати продукт</h2>
-<mat-dialog-content class="modalContent">
-  <mat-form-field>
-    <mat-label>Назва</mat-label>
-    <input matInput [(ngModel)]="name" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Ціна</mat-label>
-    <input type="number" matInput [(ngModel)]="price" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Знижка (%)</mat-label>
-    <input type="number" matInput [(ngModel)]="discount" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>SKU</mat-label>
-    <input matInput [(ngModel)]="sku" />
-  </mat-form-field>
+<div class="tabs">
+  <p
+    class="tab"
+    [ngClass]="tab === 'form' ? 'active' : ''"
+    (click)="setTab('form')"
+  >
+    Product
+  </p>
+  <p
+    class="tab"
+    [ngClass]="tab === 'cat' ? 'active' : ''"
+    (click)="setTab('cat')"
+  >
+    Category
+  </p>
+</div>
+<mat-dialog-content>
+  @if(tab === 'form'){
+  <div class="modalContent">
+    <mat-form-field>
+      <mat-label>Назва</mat-label>
+      <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ціна</mat-label>
+      <input type="number" matInput [(ngModel)]="price" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Знижка (%)</mat-label>
+      <input type="number" matInput [(ngModel)]="discount" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>SKU</mat-label>
+      <input matInput [(ngModel)]="sku" />
+    </mat-form-field>
+  </div>
+  }@else if(tab === 'cat'){
+  <p>chose category</p>
+  }
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Скасувати</button>

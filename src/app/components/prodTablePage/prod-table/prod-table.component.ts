@@ -10,6 +10,7 @@ import { PriceComponent } from '../prodComponents/price/price.component';
 import { CountryComponent } from '../prodComponents/country/country.component';
 import { TagComponent } from '../prodComponents/tag/tag.component';
 import { ActionComponent } from '../prodComponents/action/action.component';
+import { CategoryComponent } from '../prodComponents/category/category.component';
 
 @Component({
   selector: 'app-prod-table',
@@ -24,6 +25,7 @@ import { ActionComponent } from '../prodComponents/action/action.component';
     CountryComponent,
     TagComponent,
     ActionComponent,
+    CategoryComponent,
   ],
   templateUrl: './prod-table.component.html',
   styleUrl: './prod-table.component.css',
@@ -36,6 +38,7 @@ export class ProdTableComponent implements OnInit {
     'price',
     'country',
     'tag',
+    'cat',
     'action',
   ];
   public isShown!: number | null;
