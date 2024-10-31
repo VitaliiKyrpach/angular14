@@ -37,7 +37,7 @@
     </mat-form-field>
   </div>
   }@else if(tab === 'cat'){
-  <p>chose category</p>
+  <prod-modal-tree (dispatchCategory)="getCategoty($event)" />
   }
 </mat-dialog-content>
 <mat-dialog-actions>

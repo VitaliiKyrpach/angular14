@@ -46,7 +46,6 @@ export class ProdTableComponent implements OnInit {
   ngOnInit(): void {
     this.ProdTabService.getAllProducts();
     this.ProdTabService.books$.subscribe((data) => (this.products = data));
-    console.log(this.products);
   }
   public receiveId(id: number | null): void {
     this.isShown = id;

@@ -23,7 +23,7 @@ tr {
   width: 2px;
 }
 ::ng-deep .mdc-data-table__content::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 ::ng-deep .mdc-data-table__cell.mat-column-SKU,
 .mat-column-SKU {

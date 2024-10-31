@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, signal } from '@angular/core';
 import {
   MatDialog,
   MatDialogActions,
@@ -14,6 +14,8 @@ import { ProdTableService } from '../../../services/prod-table.service';
 import { FormsModule } from '@angular/forms';
 import { MaterialFileInputModule } from 'ngx-custom-material-file-input';
 import { CommonModule } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ProdModalTreeComponent } from '../prod-modal-tree/prod-modal-tree.component';
 
 @Component({
   selector: 'app-prod-modal',
@@ -29,11 +31,14 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     MaterialFileInputModule,
     CommonModule,
+    ProdModalTreeComponent,
   ],
   templateUrl: './prod-modal.component.html',
   styleUrl: './prod-modal.component.css',
 })
 export class ProdModalComponent implements OnInit {
+  readonly panelOpenState = signal(false);
+
   public name!: string;
   public price!: number;
   public discount!: number | null;
@@ -43,6 +48,7 @@ export class ProdModalComponent implements OnInit {
   public image!: File;
   private id!: number;
   public tab: 'cat' | 'form' = 'form';
+  private category: string[] = [];
 
   constructor(
     private ProdTabService: ProdTableService,
@@ -76,9 +82,10 @@ export class ProdModalComponent implements OnInit {
       discount: this.discount,
       sku: this.sku,
       id: this.id,
+      category: this.category,
     };
     console.log(item);
-    // this.ProdTabService.editItem(item);
+    this.ProdTabService.editItem(item);
     this.dialog.closeAll();
   }
 
@@ -94,11 +101,13 @@ export class ProdModalComponent implements OnInit {
       imageUrl: this.image,
       // image: 'https://via.placeholder.com/50',
     };
-
     this.ProdTabService.addItem(newItem);
     this.dialog.closeAll();
   }
   public setTab(tab: 'cat' | 'form'): void {
     this.tab = tab;
+  }
+  getCategoty(e: string[]) {
+    this.category = e;
   }
 }

@@ -1,0 +1,29 @@
+.example-tree-node {
+  display: flex;
+  align-items: center;
+}
+::ng-deep cdk-tree-node[aria-level="2"],
+cdk-tree-node[aria-level="3"] {
+  padding-left: 20px !important; /* Ваше значення для рівня 1 */
+}
+
+::ng-deep .mat-mdc-dialog-container .mat-mdc-dialog-content {
+  scrollbar-width: 6px;
+}
+::ng-deep .mat-mdc-dialog-container .mat-mdc-dialog-content::-webkit-scrollbar {
+  width: 6px;
+}
+::ng-deep
+  .mat-mdc-dialog-container
+  .mat-mdc-dialog-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+::ng-deep cdk-tree-node {
+  cursor: pointer;
+}
+::ng-deep cdk-tree-node:hover {
+  background-color: rgb(240, 240, 240);
+}
+::ng-deep cdk-tree-node:active {
+  background-color: rgb(218, 218, 218);
+}

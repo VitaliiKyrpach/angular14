@@ -36,6 +36,7 @@ input[type="number"] {
 }
 ::ng-deep .mdc-dialog--open .mat-mdc-dialog-surface {
   height: 505px;
+  /* width: 300px; */
 }
 .tabs {
   display: flex;
