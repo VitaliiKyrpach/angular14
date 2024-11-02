@@ -7,7 +7,7 @@ import { ProductsComponent } from './components/productsPage/products/products.c
 import { ParentComponent } from './components/cartRefPage/parent/parent.component';
 import { GameComponent } from './components/gamePage/game/game.component';
 import { ProdComponent } from './components/prodTablePage/prod/prod.component';
-
+import { AuthComponent } from './components/authPage/auth/auth.component';
 
 export const routes: Routes = [
   {
@@ -41,5 +41,9 @@ export const routes: Routes = [
   {
     path: 'homework-6',
     component: ProdComponent,
+  },
+  {
+    path: 'homework-7',
+    component: AuthComponent,
   },
 ];

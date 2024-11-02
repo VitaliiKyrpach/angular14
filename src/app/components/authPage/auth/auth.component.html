@@ -1,0 +1,7 @@
+<section>
+  @if(mode === 'signin'){
+  <app-signin (setSignInMode)="setMode($event)" />
+  }@else if(mode === 'signup'){
+  <app-signup (setSignupMode)="setMode($event)" />
+  }
+</section>
