@@ -11,8 +11,7 @@ import { SignupComponent } from '../signup/signup.component';
 })
 export class AuthComponent {
   public mode: string = 'signup';
-  public setMode(e: any): void {
-    console.log(e);
+  public setMode(e: string): void {
     this.mode = e;
   }
 }

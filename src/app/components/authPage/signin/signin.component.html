@@ -1,2 +1,44 @@
-<p>Do not have an account?</p>
-<button type="button" (click)="setMode()">Sign Up here</button>
+<div class="wrapper">
+  <h2 class="title">Вхід</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field>
+      <mat-label>Пошта</mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="pat@example.com"
+        formControlName="email"
+        (blur)="emailErrorFunc('email')"
+      />
+      @if(email && email.invalid){
+      <p class="error">{{ errors.email }}</p>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Пароль</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="***"
+        formControlName="password"
+        (blur)="emailErrorFunc('password')"
+      />
+      @if(password && password.invalid){
+      <p class="error">{{ errors.password }}</p>
+      }
+    </mat-form-field>
+    <button
+      class="submitBtn"
+      type="submit"
+      [disabled]="!loginForm.valid || !loginForm.dirty"
+    >
+      Увійти
+    </button>
+  </form>
+  <div class="redirect">
+    <p>Не маєш акаунту?</p>
+    <button class="redirectBtn" type="button" (click)="setMode()">
+      Зареєструйся тут
+    </button>
+  </div>
+</div>

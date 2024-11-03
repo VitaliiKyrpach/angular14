@@ -1,2 +1,83 @@
-<p>Already have an account?</p>
-<button type="button" (click)="setMode()">Sign In here</button>
+<div class="wrapper">
+  <h2 class="title">Реєстрація</h2>
+  <form [formGroup]="regForm" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field>
+      <mat-label>Ім'я</mat-label>
+      <input
+        matInput
+        placeholder="John"
+        formControlName="firstName"
+        type="text"
+        (blur)="updateErrorMessage('firstName')"
+      />
+      @if(firstName && firstName.invalid){
+      <p class="error">{{ errors.firstName }}</p>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Прізвище</mat-label>
+      <input
+        matInput
+        placeholder="Doe"
+        formControlName="lastName"
+        type="text"
+        (blur)="updateErrorMessage('lastName')"
+      />
+      @if(lastName && lastName.invalid){
+      <p class="error">{{ errors.lastName }}</p>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Пошта</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        type="email"
+        (blur)="updateErrorMessage('email')"
+      />
+      @if(email && email.invalid){
+      <p class="error">{{ errors.email }}</p>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Пароль</mat-label>
+      <input
+        matInput
+        placeholder="***"
+        formControlName="password"
+        type="password"
+        (blur)="updateErrorMessage('password')"
+      />
+      @if(password && password.invalid){
+      <p class="error">{{ errors.password }}</p>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Підтвердіть пароль</mat-label>
+      <input
+        matInput
+        placeholder="***"
+        formControlName="passwordCheck"
+        type="password"
+        (blur)="updateErrorMessage('passwordCheck')"
+      />
+      @if(passwordCheck && passwordCheck.invalid){
+      <p class="error">{{ errors.passwordCheck }}</p>
+      }
+    </mat-form-field>
+    <button
+      class="submitBtn"
+      type="submit"
+      [disabled]="!regForm.valid || !regForm.dirty"
+    >
+      Зареєструватися
+    </button>
+  </form>
+  <div class="redirect">
+    <p>Вже маєш акаунт?</p>
+    <button class="redirectBtn" type="button" (click)="setMode()">
+      Залогінься тут
+    </button>
+  </div>
+</div>
