@@ -9,7 +9,8 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { confirmPass } from '../../../validators/validTwoPas';
-// import { ConfirmPass } from '../../../validators/validTwoPas';
+import { RegErrors, RegForm } from '../../../interfaces/interfaces';
+
 
 @Component({
   selector: 'app-signup',
@@ -23,15 +24,14 @@ import { confirmPass } from '../../../validators/validTwoPas';
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent {
   @Output() setSignupMode = new EventEmitter<string>();
 
-  public regForm = new FormGroup({
+  public regForm = new FormGroup<RegForm>({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [
       Validators.required,
-      Validators.email,
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
     ]),
     password: new FormControl('', [
@@ -39,14 +39,12 @@ export class SignupComponent implements OnInit {
       Validators.minLength(6),
     ]),
     passwordCheck: new FormControl('', Validators.required),
-  });
+  },
+[confirmPass]);
 
-  ngOnInit(): void {
-    this.passwordCheck.addValidators(confirmPass(this.password));
-    this.passwordCheck.updateValueAndValidity();
-  }
+ 
 
-  public errors = {
+  public errors:RegErrors = {
     firstName: '',
     lastName: '',
     email: '',
@@ -58,7 +56,6 @@ export class SignupComponent implements OnInit {
     this.setSignupMode.emit('signin');
   }
   public onSubmit(): void {
-    console.log(this.regForm.value);
     this.regForm.reset();
     this.firstName?.setErrors(null);
     this.lastName?.setErrors(null);
@@ -86,19 +83,15 @@ export class SignupComponent implements OnInit {
   public updateErrorMessage(type: string): void {
     switch (type) {
       case 'firstName':
-        if (this.firstName && this.firstName.hasError('required')) {
-          this.errors.firstName = "Поле обов'язкове";
-        } else {
-          this.errors.firstName = '';
-        }
+        const firstNameError = this.firstName && this.firstName.hasError('required')
+        this.errors.firstName = firstNameError ? "Поле обов'язкове" : '';
         break;
+
       case 'lastName':
-        if (this.lastName && this.lastName.hasError('required')) {
-          this.errors.lastName = "Поле обов'язкове";
-        } else {
-          this.errors.lastName = '';
-        }
+        const lastNameError = this.lastName && this.lastName.hasError('required')
+        this.errors.lastName = lastNameError? "Поле обов'язкове" : ''
         break;
+
       case 'email':
         if (this.email && this.email.hasError('required')) {
           this.errors.email = "Поле обов'язкове";
@@ -108,6 +101,7 @@ export class SignupComponent implements OnInit {
           this.errors.email = '';
         }
         break;
+
       case 'password':
         if (this.password && this.password.hasError('required')) {
           this.errors.password = "Поле обов'язкове";
@@ -117,14 +111,17 @@ export class SignupComponent implements OnInit {
           this.errors.password = '';
         }
         break;
+
       case 'passwordCheck':
+        console.log(this.regForm.hasError('confirm'))
         if (this.passwordCheck && this.passwordCheck.hasError('required')) {
           this.errors.passwordCheck = "Поле обов'язкове";
         } else if (
-          this.passwordCheck &&
-          this.passwordCheck.hasError('confirm')
+          this.regForm.hasError('confirm')
         ) {
+          this.passwordCheck.setErrors({confirm: true})
           this.errors.passwordCheck = 'Паролі не співпадають';
+          console.log(this.errors)
         } else {
           this.errors.passwordCheck = '';
         }

@@ -1,3 +1,5 @@
+import { FormControl } from "@angular/forms";
+
 export interface Todo {
   title: string;
   acomplished: boolean;
@@ -81,3 +83,27 @@ export interface ProdItem {
   sku: string;
   id: number;
 }
+
+export interface LoginForm {
+  email: FormControl<string | null>;
+  password: FormControl<string | null>;
+}
+
+export interface RegForm {
+  firstName: FormControl<string | null>;
+  lastName: FormControl<string | null>;
+  email: FormControl<string | null>;
+  password: FormControl<string | null>;
+  passwordCheck: FormControl<string | null>;
+}
+export interface RegErrors{
+  firstName: string,
+  lastName: string,
+  email: string,
+  password: string,
+  passwordCheck: string,
+};
+export interface LoginErrors{
+  email: string,
+  password: string,
+};

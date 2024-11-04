@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { LoginErrors, LoginForm } from '../../../interfaces/interfaces';
 
 @Component({
   selector: 'app-signin',
@@ -24,10 +25,9 @@ import { MatInputModule } from '@angular/material/input';
 export class SigninComponent {
   @Output() setSignInMode = new EventEmitter<string>();
 
-  public loginForm = new FormGroup({
+  public loginForm = new FormGroup<LoginForm>({
     email: new FormControl('', [
       Validators.required,
-      Validators.email,
       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
     ]),
     password: new FormControl('', [
@@ -35,7 +35,8 @@ export class SigninComponent {
       Validators.minLength(4),
     ]),
   });
-  errors = {
+  
+  errors: LoginErrors = {
     email: '',
     password: '',
   };
