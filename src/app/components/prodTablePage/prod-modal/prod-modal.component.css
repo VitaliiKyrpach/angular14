@@ -56,3 +56,10 @@ input[type="number"] {
 .active {
   border-bottom: 3px solid #005cbb;
 }
+.error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  color: rgb(186, 26, 26);
+}

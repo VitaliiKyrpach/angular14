@@ -18,31 +18,61 @@
 </div>
 <mat-dialog-content>
   @if(tab === 'form'){
-  <div class="modalContent">
+    <form [formGroup]="editForm" class="modalContent">
     <mat-form-field>
       <mat-label>Назва</mat-label>
-      <input matInput [(ngModel)]="name" />
+      <input matInput
+      formControlName="name"
+      type="text"
+      (blur)="updateErrorMessage('name')"
+      />
+      @if(editForm.controls.name.invalid){
+        <p class="error">{{ errors.name }}</p>
+        }
     </mat-form-field>
     <mat-form-field>
       <mat-label>Ціна</mat-label>
-      <input type="number" matInput [(ngModel)]="price" />
+      <input matInput 
+      formControlName="price"
+      type="number"
+      (blur)="updateErrorMessage('price')"
+      />
+      @if(editForm.controls.price.invalid){
+        <p class="error">{{ errors.price }}</p>
+        }
     </mat-form-field>
     <mat-form-field>
       <mat-label>Знижка (%)</mat-label>
-      <input type="number" matInput [(ngModel)]="discount" />
+      <input matInput
+      formControlName="discount"
+      type="number"
+      (blur)="updateErrorMessage('discount')"
+      />
+      @if(editForm.controls.discount.invalid){
+        <p class="error">{{ errors.discount }}</p>
+        }
     </mat-form-field>
     <mat-form-field>
       <mat-label>SKU</mat-label>
-      <input matInput [(ngModel)]="sku" />
+      <input matInput
+      formControlName="sku"
+      type="text"
+      placeholder="sku000"
+      (blur)="updateErrorMessage('sku')"
+      />
+      @if(editForm.controls.sku.invalid){
+        <p class="error">{{ errors.sku }}</p>
+        }
     </mat-form-field>
-  </div>
+    </form>
+
   }@else if(tab === 'cat'){
   <prod-modal-tree (dispatchCategory)="getCategoty($event)" />
   }
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Скасувати</button>
-  <button mat-button class="btnModal" (click)="handleEdit()">Зберегти</button>
+  <button mat-button class="btnModal" (click)="handleEdit()" [disabled]="!editForm.valid || !editForm.dirty">Зберегти</button>
 </mat-dialog-actions>
 } @else{
 <h2 mat-dialog-title>Додати продукт</h2>
