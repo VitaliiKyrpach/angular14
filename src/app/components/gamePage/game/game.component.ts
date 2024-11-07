@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Cell, Mark } from '../../../interfaces/interfaces';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { GameserviceService } from '../../../services/gameservice.service';
 
 @Component({
   selector: 'app-game',
@@ -12,87 +13,34 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './game.component.css',
 })
 export class GameComponent {
-  public time: number = 0;
-  private usedIds: number[] = [];
-  public intervalId!: any;
-  public countComp: number = 0;
-  public countPlayer: number = 0;
+  public countComp!: number;
+  public countPlayer!: number;
+  public gridCell: Cell[];
+  public time!: number;
   public winner: Mark | null = null;
-  public gridCell: Cell[] = Array.from({ length: 100 }, (_, index) => ({
-    id: index,
-    mark: Mark.NONE,
-  }));
-
-  public startGame(): void {
-    if (!this.intervalId) {
-      this.readyCell();
-      this.intervalId = setInterval(() => {
-        this.checkScore();
-        this.readyCell();
-      }, this.time);
-    }
-    if (this.countComp === 10 || this.countPlayer === 10) {
-      clearInterval(this.intervalId);
-    }
+  public inGame: boolean = false
+  constructor(private gameService: GameserviceService){
+    this.gameService.countComp.subscribe(item=> this.countComp = item)
+    this.gameService.countPlayer.subscribe(item=> this.countPlayer = item)
+    this.gridCell = this.gameService.gridCell
+    this.gameService.winner.subscribe(win => this.winner = win)
+    this.time = this.gameService.getTime();
   }
-
-  public reset(): void {
-    clearInterval(this.intervalId);
-    this.intervalId = null;
-    this.gridCell.map((cell) => (cell.mark = Mark.NONE));
-    this.countComp = 0;
-    this.countPlayer = 0;
-    this.time = 0;
-    this.winner = null;
+  public handleCell(e: Event){
+    this.gameService.handleCell(e)
   }
-
-  public handleCell(e: Event): void {
-    if (!this.intervalId) return;
-    const target = e.target as HTMLElement;
-
-    if (this.gridCell[Number(target.id)].mark !== Mark.PICK) {
-      return;
-    }
-    this.gridCell.map((cell) => {
-      if (cell.id === Number(target.id)) {
-        cell.mark = Mark.USER;
-        this.countPlayer += 1;
-      }
-    });
-    this.checkScore();
+  public setTime(e: any): void{
+    this.gameService.setTime(e)
+    this.time = this.gameService.getTime();
   }
-
-  private readyCell(): void {
-    this.gridCell.find((cell) => {
-      if (cell.mark === Mark.PICK) {
-        cell.mark = Mark.COMP;
-        this.countComp += 1;
-      }
-    });
-
-    this.checkScore();
-    if (this.winner) {
-      return;
-    }
-
-    let id: number;
-    do {
-      id = Math.floor(Math.random() * 100);
-    } while (this.usedIds.includes(id));
-    this.usedIds.push(id);
-    if (this.gridCell[id].mark === Mark.NONE) {
-      this.gridCell[id].mark = Mark.PICK;
-    }
+  public startGame():void{
+    this.gameService.startGame()
+    this.inGame = true
   }
-
-  private checkScore() {
-    if (this.countComp === 10) {
-      clearInterval(this.intervalId);
-      this.winner = Mark.COMP;
-    } else if (this.countPlayer === 10) {
-      clearInterval(this.intervalId);
-      this.winner = Mark.USER;
-    }
-    return;
+  public reset():void{
+    this.gameService.reset()
+    this.gameService.setTime(0)
+    this.time = this.gameService.getTime();
+    this.inGame = false
   }
 }
