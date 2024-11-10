@@ -8,6 +8,10 @@ import { ParentComponent } from './components/cartRefPage/parent/parent.componen
 import { GameComponent } from './components/gamePage/game/game.component';
 import { ProdComponent } from './components/prodTablePage/prod/prod.component';
 import { AuthComponent } from './components/authPage/auth/auth.component';
+import { StoreComponent } from './components/storePage/store/store.component';
+import { StoreAComponent } from './components/storePage/store-a/store-a.component';
+import { StoreBComponent } from './components/storePage/store-b/store-b.component';
+import { StoreCComponent } from './components/storePage/store-c/store-c.component';
 
 export const routes: Routes = [
   {
@@ -45,5 +49,23 @@ export const routes: Routes = [
   {
     path: 'homework-7',
     component: AuthComponent,
+  },
+  {
+    path: 'homework-8',
+    component: StoreComponent,
+    children: [
+      {
+        path: 'storeA',
+        component: StoreAComponent,
+      },
+      {
+        path: 'storeB',
+        component: StoreBComponent,
+      },
+      {
+        path: 'storeC',
+        component: StoreCComponent,
+      },
+    ],
   },
 ];

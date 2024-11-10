@@ -1,4 +1,4 @@
-import { FormControl } from "@angular/forms";
+import { FormControl } from '@angular/forms';
 
 export interface Todo {
   title: string;
@@ -96,14 +96,46 @@ export interface RegForm {
   password: FormControl<string | null>;
   passwordCheck: FormControl<string | null>;
 }
-export interface RegErrors{
-  firstName: string,
-  lastName: string,
-  email: string,
-  password: string,
-  passwordCheck: string,
-};
-export interface LoginErrors{
-  email: string,
-  password: string,
-};
+export interface RegErrors {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  passwordCheck: string;
+}
+export interface LoginErrors {
+  email: string;
+  password: string;
+}
+export interface StoreItem {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  inStock: boolean;
+}
+export interface FilterOption {
+  name: string;
+  value: string;
+}
+
+export interface FilterConfig {
+  label: string;
+  name: string;
+  type: 'checkbox' | 'select' | 'text';
+  options?: FilterOption[];
+}
+export interface FiltersForm {
+  category: FormControl<string | null>;
+  inStock: FormControl<boolean | null>;
+  minPrice: FormControl<number | null>;
+  maxPrice: FormControl<number | null>;
+  priceRange: FormControl<string | null>;
+}
+export interface Filters {
+  category: string | null;
+  inStock: boolean | null;
+  minPrice: number | null;
+  maxPrice: number | null;
+  priceRange: string | null;
+}
