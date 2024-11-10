@@ -15,8 +15,9 @@
     <input
       type="number"
       [ngModel]="time !== 0 ? time : null"
-      (ngModelChange)="time = $event"
+      (ngModelChange)="setTime($event)"
       placeholder="enter more than 0"
+      [disabled]="inGame"
     />
   </label>
 
@@ -25,7 +26,7 @@
       class="gameBtn"
       type="button"
       (click)="startGame()"
-      [disabled]="time < 1"
+      [disabled]="time < 1 || inGame"
     >
       Start
     </button>
@@ -33,7 +34,7 @@
       class="gameBtn"
       type="button"
       (click)="reset()"
-      [disabled]="!intervalId"
+      [disabled]="!inGame"
     >
       Reset
     </button>
