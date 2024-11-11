@@ -46,11 +46,30 @@ export class FiltersComponent {
     priceRange: new FormControl(null),
   });
   public onSubmit(): void {
-    this.storeService.calcFilters(this.filterForm.value);
+    if (this.filterForm.value.priceRange) {
+      const range = this.filterForm.value.priceRange.includes('-');
+      if (range) {
+        const numbers = this.filterForm.value.priceRange
+          .split('-')
+          .map((item: string) => Number(item));
+        this.filterForm.patchValue({
+          minPrice: numbers[0],
+          maxPrice: numbers[1],
+        });
+      } else {
+        const number = Number(
+          this.filterForm.value.priceRange.replace('+', '')
+        );
+        this.filterForm.patchValue({
+          minPrice: number,
+        });
+      }
+    }
+    this.storeService.setFilters(this.filterForm.value);
+    console.log(this.filterForm.value);
   }
   public onReset(): void {
     this.filterForm.reset();
-    this.storeService.calcFilters(this.filterForm.value);
-    console.log(this.filterForm.value);
+    this.storeService.setFilters(this.filterForm.value);
   }
 }
