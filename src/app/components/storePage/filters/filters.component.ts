@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { StoreServiceService } from '../../../services/store-service.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'store-filters',
@@ -24,6 +25,7 @@ import { StoreServiceService } from '../../../services/store-service.service';
     MatCheckboxModule,
     MatRadioModule,
     ReactiveFormsModule,
+    MatButtonModule,
   ],
   templateUrl: './filters.component.html',
   styleUrl: './filters.component.css',
@@ -43,8 +45,12 @@ export class FiltersComponent {
     maxPrice: new FormControl(null),
     priceRange: new FormControl(null),
   });
-  public onSubmit() {
+  public onSubmit(): void {
     this.storeService.calcFilters(this.filterForm.value);
-    // this.storeService.filters.next(this.filterForm.value);
+  }
+  public onReset(): void {
+    this.filterForm.reset();
+    this.storeService.calcFilters(this.filterForm.value);
+    console.log(this.filterForm.value);
   }
 }

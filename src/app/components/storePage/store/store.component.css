@@ -1,0 +1,7 @@
+.linksList {
+  display: flex;
+  margin-left: 20px;
+}
+::ng-deep a.mat-mdc-button.activebutton {
+  color: red;
+}

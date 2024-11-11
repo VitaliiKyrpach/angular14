@@ -77,10 +77,10 @@ export interface ProductTable {
 }
 
 export interface ProdItem {
-  name: string;
-  price: number;
+  name: string | null;
+  price: number | null;
   discount: number | null;
-  sku: string;
+  sku: string | null;
   id: number;
 }
 
@@ -114,6 +114,20 @@ export interface StoreItem {
   price: number;
   inStock: boolean;
 }
+
+export interface EditForm {
+  name: FormControl<string | null>;
+  price: FormControl<number | null>;
+  discount: FormControl<number | null>;
+  sku: FormControl<string | null>;
+}
+export interface EditErrors {
+  name: string;
+  price: string;
+  discount: string;
+  sku: string;
+}
+
 export interface FilterOption {
   name: string;
   value: string;

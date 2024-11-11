@@ -1,11 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  FilterConfig,
-  Filters,
-  FiltersForm,
-  StoreItem,
-} from '../interfaces/interfaces';
+import { FilterConfig, Filters, StoreItem } from '../interfaces/interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -69,7 +64,5 @@ export class StoreServiceService {
     }
 
     this.filteredData.next(data);
-    console.log(data);
-    console.log(filters);
   }
 }

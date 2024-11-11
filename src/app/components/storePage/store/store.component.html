@@ -1,6 +1,21 @@
-<ul>
-  <li><a routerLink="storeA">store A</a></li>
-  <li><a routerLink="storeB">store B</a></li>
-  <li><a routerLink="storeC">store C</a></li>
-</ul>
+<nav>
+  <ul class="linksList">
+    <li>
+      <a mat-button routerLink="storeA" routerLinkActive="activebutton"
+        >store A</a
+      >
+    </li>
+    <li>
+      <a mat-button routerLink="storeB" routerLinkActive="activebutton"
+        >store B</a
+      >
+    </li>
+    <li>
+      <a mat-button routerLink="storeC" routerLinkActive="activebutton"
+        >store C</a
+      >
+    </li>
+  </ul>
+</nav>
+<mat-divider></mat-divider>
 <router-outlet></router-outlet>

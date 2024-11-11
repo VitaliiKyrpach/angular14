@@ -18,7 +18,6 @@ export class StoreAComponent implements OnInit {
   ngOnInit() {
     this.storeService.getProducts('storeA');
     this.storeService.currentData.subscribe((data) => (this.data = data));
-    // this.data = this.storeService.data;
     this.storeService.getFilters('storeA').subscribe((data: FilterConfig[]) => {
       this.filters = data;
       console.log(this.filters);
