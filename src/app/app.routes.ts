@@ -13,6 +13,7 @@ import { StoreAComponent } from './components/storePage/store-a/store-a.componen
 import { StoreBComponent } from './components/storePage/store-b/store-b.component';
 import { StoreCComponent } from './components/storePage/store-c/store-c.component';
 import { StoreComponentComponent } from './components/storePage/store-component/store-component.component';
+import { TodoStoreComponent } from './components/newTodoPage/todo/todo.component';
 
 export const routes: Routes = [
   {
@@ -76,5 +77,9 @@ export const routes: Routes = [
         data: { store: 'storeC' },
       },
     ],
+  },
+  {
+    path: 'todoStore',
+    component: TodoStoreComponent,
   },
 ];

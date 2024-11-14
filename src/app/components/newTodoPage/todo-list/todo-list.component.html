@@ -1,0 +1,24 @@
+<div class="listWrapper">
+    <h2>Todo List</h2>
+    <ul>
+        @for(todo of todos$ | async; track todo.id ){
+            <li>
+                <mat-card appearance="outlined">
+                    <mat-card-header>
+                        <mat-card-title> {{todo.title}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            {{todo.description}}
+                        </p>
+                        <mat-checkbox class="example-margin">Completed</mat-checkbox>
+                      </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button>Delete todo</button>
+                    </mat-card-actions>
+                </mat-card>
+            </li>        
+        
+        }
+    </ul>
+</div>
