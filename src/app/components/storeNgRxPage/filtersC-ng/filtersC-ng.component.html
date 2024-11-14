@@ -1,0 +1,47 @@
+<!-- <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="wrapper">
+    @for(item of filters; track idx; let idx = $index){ @if(item.type ===
+    'select'){
+    <mat-form-field>
+      <mat-label>{{ item.name }}</mat-label>
+      <mat-select [formControlName]="item.name">
+        @for (option of item.options; track option.name) {
+        <mat-option [value]="option.value">{{ option.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    }@else if(item.type === 'checkbox') {
+    <mat-radio-group name="inStock" formControlName="inStock" class="inStock">
+      @for(option of item.options; track option.name){
+      <mat-radio-button
+        class="example-margin"
+        [value]="option.value === 'true' ? true : false"
+        ><span class="optionLabel">
+          {{ option.name }}
+        </span>
+      </mat-radio-button>
+      }
+    </mat-radio-group>
+
+    } @else{
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ item.label }}</mat-label>
+      <input matInput type="number" [formControlName]="item.name" />
+    </mat-form-field>
+    }}
+  </div>
+  <div>
+    <button type="submit" mat-raised-button [disabled]="!filterForm.dirty">
+      Apply
+    </button>
+    <button
+      type="reset"
+      (click)="onReset()"
+      mat-raised-button
+      [disabled]="!filterForm.dirty"
+    >
+      Reset
+    </button>
+  </div>
+</form> -->

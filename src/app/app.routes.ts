@@ -9,11 +9,10 @@ import { GameComponent } from './components/gamePage/game/game.component';
 import { ProdComponent } from './components/prodTablePage/prod/prod.component';
 import { AuthComponent } from './components/authPage/auth/auth.component';
 import { StoreComponent } from './components/storePage/store/store.component';
-import { StoreAComponent } from './components/storePage/store-a/store-a.component';
-import { StoreBComponent } from './components/storePage/store-b/store-b.component';
-import { StoreCComponent } from './components/storePage/store-c/store-c.component';
 import { StoreComponentComponent } from './components/storePage/store-component/store-component.component';
 import { TodoStoreComponent } from './components/newTodoPage/todo/todo.component';
+import { StoreNgCompComponent } from './components/storeNgRxPage/store-ng-comp/store-ng-comp.component';
+import { StoreNgComponent } from './components/storeNgRxPage/store-ng/store-ng.component';
 
 export const routes: Routes = [
   {
@@ -74,6 +73,32 @@ export const routes: Routes = [
       {
         path: 'storeC',
         component: StoreComponentComponent,
+        data: { store: 'storeC' },
+      },
+    ],
+  },
+  {
+    path: 'homework-9',
+    component: StoreNgComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'storeA',
+        pathMatch: 'full',
+      },
+      {
+        path: 'storeA',
+        component: StoreNgCompComponent,
+        data: { store: 'storeA' },
+      },
+      {
+        path: 'storeB',
+        component: StoreNgCompComponent,
+        data: { store: 'storeB' },
+      },
+      {
+        path: 'storeC',
+        component: StoreNgCompComponent,
         data: { store: 'storeC' },
       },
     ],

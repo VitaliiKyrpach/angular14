@@ -1,0 +1,22 @@
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.form {
+  margin: 10px 0px;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+.inStock {
+  order: 3;
+  margin-left: 15px;
+}
+.optionLabel {
+  cursor: pointer;
+}
