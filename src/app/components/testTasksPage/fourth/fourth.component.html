@@ -1,0 +1,8 @@
+<div>
+  <h2>fourth task</h2>
+  <p>custom validator for at least one digit</p>
+  <input [formControl]="input" />
+  @if(input.touched && input.hasError('oneDigit')){
+  <p>at least one digit</p>
+  }
+</div>

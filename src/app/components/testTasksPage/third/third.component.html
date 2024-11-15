@@ -1,0 +1,17 @@
+<div>
+  <h2>third task</h2>
+  <p>select a number of showed items</p>
+  <select (change)="setNumber($event)">
+    <option value="2">2</option>
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="all" selected>All</option>
+  </select>
+  <ul>
+    @for(item of goods; track item.id){
+    <li>
+      <span>{{ item.id }}</span> - <span>{{ item.name }}</span>
+    </li>
+    }
+  </ul>
+</div>

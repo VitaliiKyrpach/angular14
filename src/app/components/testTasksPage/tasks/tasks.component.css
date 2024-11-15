@@ -1,0 +1,9 @@
+.tasks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.wrapper {
+  width: calc((100% - 25px) / 2);
+}

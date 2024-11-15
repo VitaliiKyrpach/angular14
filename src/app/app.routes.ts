@@ -13,6 +13,8 @@ import { StoreComponentComponent } from './components/storePage/store-component/
 import { TodoStoreComponent } from './components/newTodoPage/todo/todo.component';
 import { StoreNgCompComponent } from './components/storeNgRxPage/store-ng-comp/store-ng-comp.component';
 import { StoreNgComponent } from './components/storeNgRxPage/store-ng/store-ng.component';
+import { TasksComponent } from './components/testTasksPage/tasks/tasks.component';
+import { SecondComponent } from './components/testTasksPage/second/second.component';
 
 export const routes: Routes = [
   {
@@ -106,5 +108,15 @@ export const routes: Routes = [
   {
     path: 'todoStore',
     component: TodoStoreComponent,
+  },
+  {
+    path: 'tasks',
+    component: TasksComponent,
+    children: [
+      {
+        path: ':id',
+        component: SecondComponent,
+      },
+    ],
   },
 ];
