@@ -1,16 +1,17 @@
 <div class="addWrapper">
-    <h2>Add Todo</h2>
-    <form class="form" [formGroup]="todoForm" (ngSubmit)="addTodo()">
-        <mat-form-field>
-            <mat-label>Title</mat-label>
-            <input matInput formControlName="title">
-        </mat-form-field>
-        <mat-divider></mat-divider>
-        <mat-form-field>
-            <mat-label>Description</mat-label>
-            <textarea matInput formControlName="description"></textarea >
-        </mat-form-field>
-        <button type="submit" [disabled]="!todoForm.valid">Add todo</button>
-    </form>
+  <h2>Add Todo</h2>
+  <form class="form" [formGroup]="todoForm" (ngSubmit)="addTodo()">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <button type="submit" [disabled]="!todoForm.valid || !todoForm.dirty">
+      Add todo
+    </button>
+  </form>
 </div>
-    
