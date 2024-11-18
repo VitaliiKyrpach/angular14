@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { FilterConfig, StoreItem } from '../../../interfaces/interfaces';
-import { editProduct, getFilters, getProducts, setFilters } from './actions';
+import { editProduct, getFilters, getProducts, getProductsFailure, getProductsSuccess, setFilters } from './actions';
 
 export interface Store {
   products: StoreItem[];
@@ -29,7 +29,19 @@ export const initialState: StoreState = {
 
 export const storeReducer = createReducer(
   initialState,
-  on(getProducts, (state) => state),
+  on(getProductsSuccess, (state, { products }) => {
+    console.log(products)
+    return {
+      ...state, storeA: {
+        ...state.storeA, 
+        products: products
+      }
+    }
+  }),
+  on(getProductsFailure, (state, { error }) => ({
+    ...state,
+    error // Можна зберігати помилку в стані для відображення користувачу
+  })),
   on(editProduct, (state) => state),
   on(getFilters, (state) => state),
   on(setFilters, (state) => state)

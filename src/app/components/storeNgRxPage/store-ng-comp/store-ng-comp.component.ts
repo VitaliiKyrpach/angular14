@@ -8,6 +8,8 @@ import { FiltersBNgComponent } from '../filtersB-ng/filtersB-ng.component';
 import { FiltersCNgComponent } from '../filtersC-ng/filtersC-ng.component';
 import { Store } from '@ngrx/store';
 import { getProducts } from '../store/actions';
+import { Observable } from 'rxjs';
+import { selectStoreA } from '../store/selectors';
 
 @Component({
   selector: 'store-ng-comp',
@@ -23,24 +25,17 @@ import { getProducts } from '../store/actions';
   styleUrl: './store-ng-comp.component.css',
 })
 export class StoreNgCompComponent implements OnInit {
-  public storeType!: string;
-  public data!: StoreItem[];
+  // public storeType!: string;
+  public data$!: Observable<StoreItem[]>;
 
-  constructor(private route: ActivatedRoute, private store: Store) {
-    this.route.data.subscribe((data) => {
-      console.log(data['store']);
-      this.storeType = data['store'];
-    });
+  constructor( private store: Store) {   
   }
   ngOnInit() {
+    console.log('Dispatching getProducts action');
     this.store.dispatch(getProducts());
-    // this.storeService.getProducts(this.store);
-    // this.storeService.currentData.subscribe((data) => (this.data = data));
-    // this.storeService
-    //   .getFilters(this.store)
-    //   .subscribe((data: FilterConfig[]) => {
-    //     this.filters = data;
-    //     console.log(this.filters);
-    //   });
+    this.data$ = this.store.select(selectStoreA)
+    
+    this.data$.subscribe(data=> console.log(data))
+ 
   }
 }

@@ -5,7 +5,7 @@ export const selectFeatureStore = createFeatureSelector<StoreState>('store');
 
 export const selectStoreA = createSelector(
   selectFeatureStore,
-  (state) => state.storeA
+  (state) => state.storeA.products
 );
 export const selectStoreB = createSelector(
   selectFeatureStore,

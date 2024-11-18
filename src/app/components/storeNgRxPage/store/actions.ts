@@ -7,6 +7,10 @@ export const setFilters = createAction(
 );
 export const getFilters = createAction('[Store] Get Filters');
 export const getProducts = createAction('[Store] Get Products');
+export const getProductsSuccess =
+    createAction('[Store] Get ProductsSuccess',
+        props<{ products: StoreItem[] }>());
+export const getProductsFailure = createAction('[Store] Fail Products', props<{error: any}>())
 export const editProduct = createAction(
   '[Store] Edit Product',
   props<{ product: StoreItem }>()
