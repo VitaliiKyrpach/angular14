@@ -3,15 +3,15 @@ import { StoreState } from './reducers';
 
 export const selectFeatureStore = createFeatureSelector<StoreState>('store');
 
-export const selectStoreA = createSelector(
+export const selectStoreAProds = createSelector(
   selectFeatureStore,
   (state) => state.storeA.products
 );
-export const selectStoreB = createSelector(
+export const selectStoreBProds = createSelector(
   selectFeatureStore,
-  (state) => state.storeB
+  (state) => state.storeB.products
 );
-export const selectStoreC = createSelector(
+export const selectStoreCProds = createSelector(
   selectFeatureStore,
-  (state) => state.storeC
+  (state) => state.storeC.products
 );

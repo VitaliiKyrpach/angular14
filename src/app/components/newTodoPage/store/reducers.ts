@@ -25,6 +25,7 @@ export const TodoReducer = createReducer(
     };
   }),
   on(completedTodo, (state, { id }) => {
+    console.log(state)
     const idxTodo = state.todos.findIndex((item) => item.id === id);
     const updtodos = state.todos.map((item, idx) => {
       if (idx === idxTodo) {
@@ -43,7 +44,7 @@ export const TodoReducer = createReducer(
   on(DeleteTodo, (state, { id }) => {
     const newTodos = state.todos.filter((todo) => todo.id !== id);
     return {
-      state,
+      ...state,
       todos: newTodos,
     };
   })

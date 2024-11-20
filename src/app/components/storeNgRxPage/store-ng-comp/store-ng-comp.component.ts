@@ -9,7 +9,7 @@ import { FiltersCNgComponent } from '../filtersC-ng/filtersC-ng.component';
 import { Store } from '@ngrx/store';
 import { getProducts } from '../store/actions';
 import { Observable } from 'rxjs';
-import { selectStoreA } from '../store/selectors';
+import { selectStoreAProds, selectStoreBProds, selectStoreCProds } from '../store/selectors';
 
 @Component({
   selector: 'store-ng-comp',
@@ -25,17 +25,29 @@ import { selectStoreA } from '../store/selectors';
   styleUrl: './store-ng-comp.component.css',
 })
 export class StoreNgCompComponent implements OnInit {
-  // public storeType!: string;
+  public storeType!: string;
   public data$!: Observable<StoreItem[]>;
 
-  constructor( private store: Store) {   
+  constructor(private route: ActivatedRoute, private store: Store) { 
+    this.route.data.subscribe((data) => {
+      console.log(data['store']);
+      this.storeType = data['store'];
+    });  
   }
   ngOnInit() {
     console.log('Dispatching getProducts action');
     this.store.dispatch(getProducts());
-    this.data$ = this.store.select(selectStoreA)
-    
-    this.data$.subscribe(data=> console.log(data))
- 
+    switch(this.storeType){
+      case 'storeA':
+      this.data$ = this.store.select(selectStoreAProds);
+      break;
+      case 'storeB':
+        this.data$ = this.store.select(selectStoreBProds);
+      break;
+      case 'storeC':
+        this.data$ = this.store.select(selectStoreCProds);
+      break;
+    }
+  
   }
 }
