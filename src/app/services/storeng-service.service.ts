@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { StoreItem } from '../interfaces/interfaces';
+import { FilterConfig, StoreItem } from '../interfaces/interfaces';
 
   @Injectable({
     providedIn: 'root'
@@ -8,9 +8,12 @@ import { StoreItem } from '../interfaces/interfaces';
   export class StorengServiceService {
 
     constructor(private http: HttpClient) { }
-    public getProducts(){
+    public getProducts(store: string){
       console.log('service')
       return this.http
-        .get<StoreItem[]>(`http://localhost:3000/api/storeA/products`)
+        .get<StoreItem[]>(`http://localhost:3000/api/${store}/products`)
+    }
+    public getFilters(store: string){
+      return this.http.get<FilterConfig[]>(`http://localhost:3000/api/${store}/filters`)
     }
   }

@@ -15,3 +15,7 @@ export const selectStoreCProds = createSelector(
   selectFeatureStore,
   (state) => state.storeC.products
 );
+export const selectStore = createSelector(
+  selectFeatureStore,
+  (state) => state
+);

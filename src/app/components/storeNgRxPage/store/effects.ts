@@ -16,9 +16,9 @@ export class ProductsEffects {
     getProducts$ = createEffect(() =>
         this.actions$.pipe(
           ofType(getProducts),
-          switchMap(() =>
-            this.productService.getProducts().pipe(
-              map(products => getProductsSuccess({ products })),
+          switchMap(({ store }) =>
+            this.productService.getProducts(store).pipe(
+              map(products => getProductsSuccess({ products, store })),
               catchError(error => of(getProductsFailure({ error }))) // закриваємо catchError
             )
           )

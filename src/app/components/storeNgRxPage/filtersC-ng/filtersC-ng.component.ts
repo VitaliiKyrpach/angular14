@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { FilterConfig, FiltersForm } from '../../../interfaces/interfaces';
+import { Component, Input, OnInit } from '@angular/core';
+import { FilterConfig, Filters, FiltersForm } from '../../../interfaces/interfaces';
 import {
   FormControl,
   FormGroup,
@@ -12,6 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import { StorengServiceService } from '../../../services/storeng-service.service';
+import { Store } from '@ngrx/store';
+import { setFilters } from '../store/actions';
 
 @Component({
   selector: 'filtersC-ng',
@@ -29,12 +32,17 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './filtersC-ng.component.html',
   styleUrl: './filtersC-ng.component.css',
 })
-export class FiltersCNgComponent {
+export class FiltersCNgComponent implements OnInit {
+  public filters!: FilterConfig[];
   public selectValue!: string;
   public checkValue!: string;
   public numberValue!: number;
 
-  constructor() {}
+  constructor(private productService: StorengServiceService, private store: Store) {}
+
+  ngOnInit(): void {
+    this.productService.getFilters('storeC').subscribe(item=> this.filters = item)
+  }
 
   public filterForm = new FormGroup<FiltersForm>({
     category: new FormControl(null),
@@ -63,11 +71,27 @@ export class FiltersCNgComponent {
         });
       }
     }
-    // this.storeService.setFilters(this.filterForm.value);
+    const filterValues: Filters = {
+      category: this.filterForm.value.category ?? null,
+      inStock: this.filterForm.value.inStock ?? null,
+      minPrice: this.filterForm.value.minPrice ?? null,
+      maxPrice: this.filterForm.value.maxPrice ?? null,
+      priceRange: this.filterForm.value.priceRange ?? null,
+    };
+ 
+    this.store.dispatch(setFilters({filter: filterValues, store: 'storeC'}))
     console.log(this.filterForm.value);
   }
   public onReset(): void {
     this.filterForm.reset();
-    // this.storeService.setFilters(this.filterForm.value);
+    const filterValues: Filters = {
+      category: this.filterForm.value.category ?? null,
+      inStock: this.filterForm.value.inStock ?? null,
+      minPrice: this.filterForm.value.minPrice ?? null,
+      maxPrice: this.filterForm.value.maxPrice ?? null,
+      priceRange: this.filterForm.value.priceRange ?? null,
+    };
+    this.store.dispatch(setFilters({filter: filterValues, store: 'storeC'}))
+  
   }
 }
