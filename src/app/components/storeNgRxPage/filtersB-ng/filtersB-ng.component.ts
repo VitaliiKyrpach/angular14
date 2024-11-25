@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { StorengServiceService } from '../../../services/storeng-service.service';
 import { setFilters } from '../store/actions';
 import { Store } from '@ngrx/store';
+import { selectStoreBFilters } from '../store/selectors';
 
 @Component({
   selector: 'filtersB-ng',
@@ -43,6 +44,17 @@ export class FiltersBNgComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getFilters('storeB').subscribe(item=> this.filters = item)
+    this.store.select(selectStoreBFilters).subscribe(item=> {this.filterForm.setValue({
+      category: item.category,
+      inStock: item.inStock,
+      maxPrice: item.maxPrice,
+      minPrice: item.minPrice,
+      priceRange: item.priceRange
+    })
+    if(item.category !== null || item.inStock !== null || item.maxPrice !== null || item.minPrice !== null || item.priceRange !== null){
+      this.filterForm.markAsDirty()
+    }
+  })
   }
 
   public filterForm = new FormGroup<FiltersForm>({
@@ -81,8 +93,7 @@ export class FiltersBNgComponent implements OnInit {
     };
  
     this.store.dispatch(setFilters({filter: filterValues, store: 'storeB'}))
-    console.log(this.filterForm.value);
-    console.log(this.filterForm.value);
+
   }
   public onReset(): void {
     this.filterForm.reset();

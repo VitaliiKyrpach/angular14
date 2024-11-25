@@ -9,7 +9,7 @@ import { FiltersCNgComponent } from '../filtersC-ng/filtersC-ng.component';
 import { Store } from '@ngrx/store';
 import { getProducts } from '../store/actions';
 import { Observable } from 'rxjs';
-import { selectStore, selectStoreAProds, selectStoreBProds, selectStoreCProds } from '../store/selectors';
+import { selectStore, selectStoreAFilters, selectStoreAProds, selectStoreBFilters, selectStoreBProds, selectStoreCFilters, selectStoreCProds } from '../store/selectors';
 
 @Component({
   selector: 'store-ng-comp',
@@ -27,16 +27,19 @@ import { selectStore, selectStoreAProds, selectStoreBProds, selectStoreCProds } 
 export class StoreNgCompComponent implements OnInit {
   public storeType!: 'storeA'| 'storeB' | 'storeC';
   public data$!: Observable<StoreItem[]>;
+  private filters$!: Observable<any>;
 
   constructor(private route: ActivatedRoute, private store: Store) { 
     this.route.data.subscribe((data) => {
-      console.log(data['store']);
       this.storeType = data['store'];
     });  
   }
+
   ngOnInit() {
-    console.log('Dispatching getProducts action');
-    console.log(this.storeType)
+    this.filters$ = this.getFiltersForStore(this.storeType);
+    this.filters$.subscribe(() => {
+      this.store.dispatch(getProducts({ store: this.storeType }));
+    });
     this.store.dispatch(getProducts({store: this.storeType}));
     switch(this.storeType){
       case 'storeA':
@@ -50,7 +53,18 @@ export class StoreNgCompComponent implements OnInit {
       break;
     }
 
-    // this.store.select(selectStore).subscribe(item=> console.log(item))
 
+  }
+  private getFiltersForStore(store: string): Observable<any> {
+    switch (store) {
+      case 'storeA':
+        return this.store.select(selectStoreAFilters);
+      case 'storeB':
+        return this.store.select(selectStoreBFilters);
+      case 'storeC':
+        return this.store.select(selectStoreCFilters);
+      default:
+        return new Observable(); // Повертаємо порожній Observable, якщо магазин не знайдений
+    }
   }
 }

@@ -58,7 +58,7 @@ export const initialState: StoreState = {
     }),
     on(getProductsFailure, (state, { error }) => ({
       ...state,
-      error // Можна зберігати помилку в стані для відображення користувачу
+      error
     })),
     on(editProduct, (state) => state),
     on(setFilters, (state, { filter, store }) => {
