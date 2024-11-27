@@ -1,0 +1,52 @@
+<table [formGroup]="modalForm" >
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput
+        formControlName="name"
+        type="text"
+        (blur)="updateErrorMessage('name')"
+        />
+        @if(modalForm.controls.name.invalid){
+          <p class="error">{{ errors.name }}</p>
+          }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput
+        formControlName="price"
+        type="number"
+        (blur)="updateErrorMessage('name')"
+        />
+        @if(modalForm.controls.price.invalid){
+          <p class="error">{{ errors.price }}</p>
+          }
+      </mat-form-field>
+      <mat-radio-group name="inStock" formControlName="inStock" class="inStock">
+        <mat-radio-button
+          class="example-margin"
+          [value]="true"
+          ><span class="optionLabel">
+            In stock
+          </span>
+        </mat-radio-button>
+        <mat-radio-button
+          class="example-margin"
+          [value]="false"
+          ><span class="optionLabel">
+            Out of stock
+          </span>
+        </mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+            <mat-option value="Electronics">Electronics</mat-option>
+            <mat-option value="Books">Books</mat-option>
+            <mat-option value="Clothing">Clothing</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-dialog-actions>
+
+          <button mat-button type="submit" (click)="onSubmit(data.element.id)">Confirm</button>
+        </mat-dialog-actions>
+</table>

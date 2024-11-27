@@ -40,7 +40,7 @@ export class StoreNgCompComponent implements OnInit {
     this.filters$.subscribe(() => {
       this.store.dispatch(getProducts({ store: this.storeType }));
     });
-    this.store.dispatch(getProducts({store: this.storeType}));
+    // this.store.dispatch(getProducts({store: this.storeType}));
     switch(this.storeType){
       case 'storeA':
       this.data$ = this.store.select(selectStoreAProds);
@@ -64,7 +64,7 @@ export class StoreNgCompComponent implements OnInit {
       case 'storeC':
         return this.store.select(selectStoreCFilters);
       default:
-        return new Observable(); // Повертаємо порожній Observable, якщо магазин не знайдений
+        return new Observable();
     }
   }
 }
