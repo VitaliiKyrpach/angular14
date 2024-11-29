@@ -9,7 +9,15 @@ import { FiltersCNgComponent } from '../filtersC-ng/filtersC-ng.component';
 import { Store } from '@ngrx/store';
 import { getProducts } from '../store/actions';
 import { Observable } from 'rxjs';
-import { selectStore, selectStoreAFilters, selectStoreAProds, selectStoreBFilters, selectStoreBProds, selectStoreCFilters, selectStoreCProds } from '../store/selectors';
+import {
+  selectStore,
+  selectStoreAFilters,
+  selectStoreAProds,
+  selectStoreBFilters,
+  selectStoreBProds,
+  selectStoreCFilters,
+  selectStoreCProds,
+} from '../store/selectors';
 
 @Component({
   selector: 'store-ng-comp',
@@ -25,14 +33,14 @@ import { selectStore, selectStoreAFilters, selectStoreAProds, selectStoreBFilter
   styleUrl: './store-ng-comp.component.css',
 })
 export class StoreNgCompComponent implements OnInit {
-  public storeType!: 'storeA'| 'storeB' | 'storeC';
+  public storeType!: 'storeA' | 'storeB' | 'storeC';
   public data$!: Observable<StoreItem[]>;
   private filters$!: Observable<any>;
 
-  constructor(private route: ActivatedRoute, private store: Store) { 
+  constructor(private route: ActivatedRoute, private store: Store) {
     this.route.data.subscribe((data) => {
       this.storeType = data['store'];
-    });  
+    });
   }
 
   ngOnInit() {
@@ -40,20 +48,18 @@ export class StoreNgCompComponent implements OnInit {
     this.filters$.subscribe(() => {
       this.store.dispatch(getProducts({ store: this.storeType }));
     });
-    // this.store.dispatch(getProducts({store: this.storeType}));
-    switch(this.storeType){
+
+    switch (this.storeType) {
       case 'storeA':
-      this.data$ = this.store.select(selectStoreAProds);
-      break;
+        this.data$ = this.store.select(selectStoreAProds);
+        break;
       case 'storeB':
         this.data$ = this.store.select(selectStoreBProds);
-      break;
+        break;
       case 'storeC':
         this.data$ = this.store.select(selectStoreCProds);
-      break;
+        break;
     }
-
-
   }
   private getFiltersForStore(store: string): Observable<any> {
     switch (store) {

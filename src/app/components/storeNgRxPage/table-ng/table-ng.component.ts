@@ -15,13 +15,24 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class TableNgComponent {
   @Input() data!: Observable<StoreItem[]>;
+  @Input() storeType!: 'storeA' | 'storeB' | 'storeC';
+  displayedColumns: string[] = [
+    'name',
+    'price',
+    'category',
+    'inStock',
+    'action',
+  ];
 
-  displayedColumns: string[] = ['name', 'price', 'category', 'inStock', 'action'];
-  constructor(private dialog: MatDialog){}
-  openDialog(element:StoreItem): void {
-    console.log(element)
+  constructor(private dialog: MatDialog) {}
+
+  openDialog(element: StoreItem): void {
+    console.log(element);
     this.dialog.open(StoreModalComponent, {
-      data: { element: element },
+      data: {
+        element: element,
+        storeType: this.storeType,
+      },
     });
   }
 }
